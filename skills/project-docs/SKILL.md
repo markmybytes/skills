@@ -21,20 +21,16 @@ duplicated or fragmented documentation.
 
 ## Interaction flow
 
-- **No actionable instruction**: do not edit. Present a plan covering baseline
-  documents, optional documents, and the README profile; ask whether this is a
-  Public Project or Team Onboarding README.
-- **Explicit action** (audit, refine, consolidate): follow that scope; if the
-  prompt names one document, edit only that document.
-- **Existing Markdown**: align in-scope documents to their matching template
-  structure by default, preserving accurate facts and local policy unless
-  stale, contradictory, or user-changed; drop empty or inapplicable sections.
-- **Plan approved** (go / lgtm / approve): proceed within the confirmed scope;
-  show safe baseline rules from the templates as suggestions — approved rules
-  become project policy and optional labels are removed.
-- Ask only blocking questions (README profile, missing project facts,
-  conflicting policy, or approval for normative `STYLE.md` rules); after edits,
-  update documentation maps and verify links and placeholders.
+Use this sequence for every request:
+
+`CLASSIFY → GATHER → PLAN → ASK → EXECUTE → VERIFY`
+
+- **CLASSIFY**: Identify mode (`scaffold`, `refine`, `consolidate`, or `audit`) and scope. An explicitly named document or action overrides default baseline scope. No actionable instruction means plan only; do not edit. Determine README profile; ask if unclear.
+- **GATHER**: If a document is missing, read its matching asset template when available. If a document exists, study the document and its matching template when available. Gather only in-scope Markdown and relevant templates. Record missing facts, conflicts, and justified optional documents. Do not inspect source, tests, config, CI, or deployment files.
+- **PLAN**: For write modes, plan document creation or updates. For existing documents, plan both structural alignment to matching templates and content refinement, preserving accurate facts and project policy, removing empty/inapplicable sections, and never inventing missing content. Include optional documents only when justified. Audit mode plans findings only.
+- **ASK**: Present one approval request containing scope, documents to create/update, structural/content changes, optional documents, and any safe template defaults that would become project policy. Ask only blocking questions: README profile, missing facts, conflicting policy, or normative `STYLE.md` rules. `lgtm`, `go`, or `approve` authorizes execution; there is no second per-section approval gate. Audit mode skips approval and remains report-only.
+- **EXECUTE**: Apply approved plan in this order: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `STYLE.md`, then justified optional documents. Scaffold missing docs from templates; align and refine existing docs; consolidate duplicate content under documented ownership rules. Do not make unplanned edits.
+- **VERIFY**: Update README and AGENTS documentation maps, remove placeholders and empty sections, and verify links, anchors, paths, commands, ownership, and README profile. Report created, updated, unchanged, and blocked/user-needed items.
 
 ## Baseline documents
 
