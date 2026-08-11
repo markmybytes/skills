@@ -1,4 +1,4 @@
-<!-- Team Onboarding README. Keep it practical; omit public-marketing sections. -->
+<!-- Developer-facing README template. Keep it practical; omit user-marketing sections. -->
 
 # <Project name>
 

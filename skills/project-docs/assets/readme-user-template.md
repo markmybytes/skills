@@ -1,5 +1,5 @@
 <!--
-Public Project README template.
+User-facing README template.
 
 Keep only sections useful for this project. Delete this comment when finished.
 Replace every placeholder with a user-provided or confirmed fact. Never invent badges, URLs,

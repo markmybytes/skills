@@ -61,17 +61,18 @@ never create fictional roadmaps, contact channels, policies, or procedures:
 
 ## README profile
 
-Use the repository's visibility and audience. If unclear, ask.
+Choose the profile by the README's primary reader and purpose, not repository
+visibility. If unclear, ask.
 
-### Public Project README
+### User-facing README
 
-For open-source software or public tools. Lead with value to a new visitor:
-project name, short description, useful badges, and demo or screenshot when
-available; what it does and who it is for; installation and first use;
-configuration and deployment when needed; links to contribution, license,
-security, support, and detailed docs when present. Add a table of contents
-only for a long README; roadmap, contact, or acknowledgments only when real
-and maintained.
+For project users. Lead with value to a new visitor: project name, short
+description, useful badges, and demo or screenshot when available; what it
+does and who it is for; usage and installation and first use; configuration,
+deployment, and relevant environment notes when needed; links to
+contribution, license, security, support, and detailed docs when present. Add
+a table of contents only for a long README; roadmap, contact, or
+acknowledgments only when real and maintained.
 
 For technology badges, select from https://badges.pages.dev/ and use the
 generated Shields markup with default `style=for-the-badge` and
@@ -81,13 +82,13 @@ link each badge to the technology's official site when known. Keep
 repository-status badges (tag, contributors, forks, stars, issues, license)
 separate and unchanged.
 
-### Team Onboarding README
+### Developer-facing README
 
-For private, internal, or team-maintained software. Lead with getting a
-developer productive: project scope and audience; stack and prerequisites;
-setup and first run; development, test, quality, and build commands; important
-environment or data limitations; and links to contribution, style, deployment,
-architecture, and agent docs. No public-marketing sections.
+For contributors and developers. Lead with getting a developer productive:
+project scope and audience; stack and prerequisites; setup and first run;
+development, test, quality, and build commands; important environment or data
+limitations; and links to contribution, style, deployment, architecture, and
+agent docs. No user-marketing sections.
 
 ## Build AGENTS.md
 
@@ -182,8 +183,8 @@ AGENTS map:
 
 Use templates in `assets/` as default structural guides, not rigid output:
 
-- `assets/readme-public-template.md`
-- `assets/readme-team-template.md`
+- `assets/readme-user-template.md`
+- `assets/readme-developer-template.md`
 - `assets/agents-template.md`
 - `assets/contributing-template.md`
 - `assets/style-template.md`
