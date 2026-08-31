@@ -1,132 +1,56 @@
 ---
 name: avoid-death-by-powerpoint
-description: Plan, create, review, refine, or transform presentations and slide decks from briefs, source material, existing decks, or scripts; also help produce speaker scripts and delivery plans using cognitive design principles.
+description: Create, review, fix, or transform the VISUAL design of slides using cognitive design principles (one message per slide, minimal text, size hierarchy, contrast, max six objects). Use whenever a user wants slides created from existing content ("turn this outline into slides", "make a deck from these points"), or improved, decluttered, made more visual, or checked against slide design — even for vague requests like "make my deck better", "this slide is too busy", "my slides are wall of text", or "review my deck". For narrative, structure, speaker scripts, or delivery prep, use the avoid-death-by-presentation skill instead.
 ---
 
 # Avoid Death by PowerPoint
 
-## Intent and readiness
+Slides support speaking human, not replace. Audience cannot read dense slides and listen at same time — working memory = bottleneck. Every principle below manages bottleneck.
 
-First inspect all available input:
+Job: make slides obey principles — review, improve, create. Change slide visuals + slide text only. Real problem = story/structure/script: say so, point to avoid-death-by-presentation. User has only topic, no content: also presentation-skill territory; take over once content plan exists.
 
-- The user's prompt
-- An existing deck, if provided
-- Source documents, data, images, and links
-- The requested output
+## Five principles
 
-Detect two things separately: what the user has and what the user wants next.
+### 1. One message per slide
 
-### Readiness modes
+Slide = one clear idea. Two independent ideas on one slide: audience picks what to look at, processes neither well. Split multi-idea slides. Remove content not serving message, however interesting.
 
-Classify available material as one or more of:
+### 2. Protect working memory
 
-- **Deck-ready:** An existing deck is mostly or fully prepared.
-- **Content-ready:** A script, outline, or slide-by-slide content is ready to organize.
-- **Source-ready:** Documents, data, links, or notes exist, but content still needs extraction or organization.
-- **Brief-only:** The user provides a topic or partial brief with little source material.
-- **No-material:** Only a goal or request exists, with no brief, source material, or artifact.
-- **Mixed:** Multiple artifacts exist but contain inconsistencies.
-- **Unclear:** Available material or its intended role is ambiguous.
+Reading sentences while listening = audience drops one. So:
 
-### Intent modes
+- No sentences/paragraphs on slides.
+- Short fragments, impactful images, simple visuals.
+- Bullets: absolute minimum.
+- Slide = visual aid, not speaker script. Script lives in speaker notes.
 
-Classify the requested next action as one or more of:
+### 3. Size = importance
 
-- **Create:** Produce a missing deck, content plan, or script.
-- **Improve:** Refine an existing artifact.
-- **Review:** Identify problems without changing the artifact.
-- **Transform:** Convert one artifact into another, such as script to deck or deck to script.
-- **Prepare delivery:** Improve timing, transitions, rehearsal prompts, or Q&A preparation.
-- **Research:** Fill factual, evidence, or source gaps.
-- **Evaluate:** Check against visual principles or stated requirements.
+Eye hits largest element first. Most important element = largest. Not automatically title — enlarge whatever carries main point: number, keyword, image.
 
-If the user provides an artifact or describes preparation without explicitly requesting a next action, classify readiness but do not infer intent. Ask whether they want review, improvement, transformation, delivery support, or another action instead of creating an artifact automatically.
+### 4. Contrast directs attention
 
-Presentation context is not an operation request. A topic, audience, duration, source, or statement such as “I want to present X” does not specify an artifact or goal. Ask what help the user wants before generating an outline, script, slide plan, deck, or delivery advice.
+Contrast makes focal point obvious; secondary content stays visually quiet. Dark background + bright accent works well. Never sacrifice legibility. Never encode meaning in color alone.
 
-If intent is unclear, ask what the user wants next instead of choosing an artifact to create automatically.
+### 5. Rule of Six
 
-Extract from the available input:
+Max six visual objects per slide — text boxes, images, shapes, charts all count. Beyond six: audience scans instead of processes. Remove or split, never shrink. Fewer than six fine; six = ceiling, not target.
 
-- **Audience:** Who will see this?
-- **Goal:** What should they understand, decide, feel, or do?
-- **Constraint:** Time, format, branding, accessibility, slide count, or other limits
-- **Message:** What subject or meaning should the presentation communicate?
-- **Operation:** Create, Improve, Review, Transform, Prepare delivery, Research, or Evaluate
+## How to work
 
-Classify each item as **known**, **inferred**, **missing**, **questionable**, or **conflicting**.
+**Create:** turn provided content (blog prose, script, outline, points, source) into slides. Extract natural slide boundaries — one message per slide — not mechanical paragraph split. No padding, no inventing; content missing = say what's missing. Each slide:
 
-- Do not ask users to repeat information already present in the input.
-- If an important item is missing, request it before proceeding when it could materially change the result.
-- If an item is inferred, state the assumption.
-- If input is questionable—contradictory, ambiguous, unsupported, or likely mistaken—do not silently accept or correct it. State the issue, explain why it matters, and ask the user to confirm or correct it.
-- If sources conflict, show the conflict and ask which source should take precedence.
-- For non-critical gaps, proceed with clearly stated assumptions.
-- Do not invent facts, evidence, examples, or sources without labeling them as proposed.
+- **Slide text:** exact on-slide text
+- **Visual:** image, chart, arrangement
+- **Size hierarchy:** what is largest, what recedes
+- Optional **Rationale**, only when choice non-obvious
 
-### Choose a workflow
+**Review:** each slide, name broken principle + what specifically breaks it ("four full sentences — working memory"). Findings only; change nothing until asked.
 
-Select the smallest workflow that matches intent and readiness:
+**Improve / transform:** Create fields above, plus **Problem** line naming broken principle and why.
 
-- **Brief-only:** Gather consequential missing information, research when requested or necessary, propose content, then create the requested artifact.
-- **No-material:** Clarify goal and audience, gather or confirm source material, then create the requested artifact.
-- **Source-ready:** Extract and organize source material, flag gaps, then propose or create the requested artifact.
-- **Content-ready:** Review content structure, then generate or refine the deck.
-- **Deck-ready:** Review or improve the deck, then offer script or delivery support when requested.
-- **Mixed:** Compare artifacts, flag conflicts, and ask which source takes precedence before transforming or merging them.
-- **Any mode with research intent:** Identify unsupported claims and research only the gaps relevant to the presentation goal.
+Preserve user meaning/facts. Flag assumptions about intent/branding.
 
-Do not generate an additional artifact unless requested or explicitly approved as the next step.
+---
 
-## Content design
-
-- Give every slide one job: orient, explain, compare, show evidence, demonstrate, instruct, summarize, or prompt discussion.
-- Choose an organization that fits the subject and goal. Do not impose one narrative pattern on every presentation.
-- Titles categorize or summarize slide content. They do not need to be conclusions. Multiple slides may share a title when they cover the same topic or section.
-- Make titles accurate and useful for orientation; avoid titles that are vague or unrelated to slide content.
-- Keep facts, claims, examples, and recommendations distinguishable.
-- Remove content unrelated to the slide's job, even when it is interesting or factually correct.
-- Do not split slides merely to satisfy the Rule of Six; preserve understandable grouping.
-
-## Visual principles
-
-Apply principles in [references/visual-principles.md](references/visual-principles.md) to every slide.
-
-## Agent workflow
-
-1. Complete intent and readiness recognition, including the user's explicitly requested output.
-2. If no explicit operation is requested, stop after recognition and ask a targeted question. Do not generate an artifact or unsolicited presentation advice.
-3. Resolve consequential missing, questionable, or conflicting information before proceeding.
-4. If an existing deck is available, parse its accessible titles, text, speaker notes, visuals, charts, and structure only when the task needs deck analysis; identify inaccessible or ambiguous content. Skip deck-specific parsing when no deck exists.
-5. Branch by intent:
-    - **Review / Evaluate:** Analyze slides against [references/visual-principles.md](references/visual-principles.md) and the slide's content-design role, and report findings only. Do not change or refine anything unless the user asks for changes.
-    - **Create / Transform / Improve:** Produce the requested artifact only. Review against the visual principles as you work, but do not generate extra artifacts.
-    - **Research:** Research only the factual, evidence, or source gaps relevant to the presentation goal; do not automatically make a deck.
-    - **Prepare delivery:** Provide timing, transitions, rehearsal prompts, and Q&A support; keep them separate from slide text and script content.
-6. For each suggested or revised slide, provide:
-    - **Text**
-    - **Visual/Image**
-    - **Size hierarchy**
-    - Optional **Rationale**
-7. Approval gates are conditional: ask before creating a materially different next artifact, or when consequential assumptions or conflicts remain. Do not ask for approval after every artifact.
-8. Generate a point-form script only when requested or explicitly approved as the next step:
-
-    ```md
-    [Slide 1: Title]
-    - Speaking point
-    - Explanation, example, or interpretation
-    - Emphasis or transition
-    ```
-
-    Keep script points additive rather than repeating slide text verbatim. Scripts remain opt-in.
-9. When helping with delivery, remind the user: **“You are the presentation. PowerPoint is merely your visual aid.”** Use the reminder only in delivery support, not after every task.
-
-## Output standard
-
-- Preserve the user's meaning and facts.
-- Do not add decorative elements without a communication purpose.
-- Prefer fewer elements when fewer are sufficient.
-- Keep any later script separate from slide text.
-- Flag assumptions, unsupported claims, inaccessible content, and unresolved conflicts.
-- Do not invent presentation goals, narrative structures, artifacts, evidence, or rigid text-count rules.
-- Avoid generic praise, slogans, and closing advice unless requested or useful to the task.
+Source: Principles distilled from David JP Phillips, "How to avoid death by PowerPoint" (TEDxStockholmSalon) - https://www.youtube.com/watch?v=Iwpi1Lm6dFo
