@@ -1,0 +1,45 @@
+{
+  "skill_name": "better-cantonese-writings",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "請把以下產品更新通知潤稿成給香港讀者自然、清楚的香港繁體中文書面語。可重組句子，但不要改變日期、數字、功能或承諾；不要改寫成粵語口語。只回傳修訂稿，不要解釋。\n\n本次版本更新的主要目的，是為了對使用者在登入流程上所遇到的問題進行改善與提升。使用者可以透過新的驗證方式來完成登入，並且系統將會在偵測到異常的情況之下，自動地發送通知給管理員。我們預計將於 7 月 15 日發布更新，更新完成後服務可能會暫停 48 小時。若您有任何問題，歡迎隨時與我們進行聯絡。",
+      "expected_output": "A polished Hong Kong-facing customer notice in Hong Kong Traditional Chinese written style, with clearer sentence structure and direct verbs; no Cantonese colloquial transcription or explanation outside revised notice.",
+      "files": [],
+      "expectations": [
+        "保留原文中的 7 月 15 日與 48 小時，不改日期、數字或服務暫停承諾。",
+        "保留兩項功能語意：使用者可用新的驗證方式登入；系統偵測異常時會自動通知管理員。",
+        "未要求使用者輸入 region flag 時，直接以香港中文書面語為準，使用自然的香港正式用語；不得自動套用台灣、中國大陸、新加坡或馬來西亞用法。",
+        "實際改善至少三處歐化中文或翻譯腔結構，例如「主要目的／是為了」、「進行改善與提升」、「在……的情況之下」、「自動地」、「進行聯絡」，而非只替換單字。",
+        "因使用者明確要求只回傳修訂稿及不要解釋，不加入地域／語體提示或其他內容。"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "請潤色以下給香港家長的正式校園公告。請使用香港中文書面語，保留香港語境中的自然用詞（例如「家長教師會」、「屋苑」、「登記」、「查詢」），不要改成粵語口語，也不要把有效地域用語改成另一地區的說法；可重組句子和刪除官腔。完成公告後，若沒有既定偏好，簡短提示我可改用其他地域中文或粵語口語；不要把提示寫成問題，也不要阻塞交付。\n\n因應屋苑附近道路將會進行相關改善工程，學校將於 9 月 3 日上午 7 時 30 分開始實施臨時交通安排。家長如有需要駕車送子女到校，敬請於上述時段按照現場工作人員的指示進行行車，並預留充足時間以作安排。校方將會持續地密切關注工程進度，並於有最新消息時作出公布。對於是次安排所造成的不便，敬請各位家長予以體諒。",
+      "expected_output": "A concise formal Hong Kong-facing notice in Hong Kong Traditional Chinese written style that keeps Hong Kong lexical and register cues, removes redundant bureaucratic wording, preserves date, time, traffic instruction, and apology, then adds one non-blocking preference hint.",
+      "files": [],
+      "expectations": [
+        "保留香港語境中的「屋苑」及正式公告語域，不擅自改成其他地區詞彙或口語語氣。",
+        "保留 9 月 3 日上午 7 時 30 分、臨時交通安排、駕車送子女到校須按現場指示行車並預留時間等資訊。",
+        "刪減「將會進行相關」、「持續地密切」、「作出公布」、「予以體諒」等冗餘結構，或以同等自然表達重組句子，不改變告示內容。",
+        "未指定 flag 或其他地域偏好時直接以香港為預設地域；「屋苑」等香港用語須保留，不得誤換成「公寓」等其他地域參考詞，也不得加入「唔」、「嘅」等未被要求的口語詞。",
+        "保留對安排造成不便的致歉／請家長體諒之意，並在修訂公告後附一句簡短、非阻塞的地域／語體提示；不要求使用者先輸入 flag。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "請潤稿以下技術公告。讀者是香港工程師；使用香港中文書面語而非粵語口語。改善中文句法與銜接，但保留所有 Markdown 結構、程式碼、技術術語、版本號、日期、狀態和引文，不要把技術詞語換成泛稱。引號內的產品標語是刻意文案，請原樣保留。只回傳修訂後的 Markdown，不要附任何提示或說明。\n\n## API v2 遷移通知\n\n我們將會在 2026-09-30 對 API v1 進行停用，並且建議所有整合服務的開發者，應該在期限之前完成遷移的工作。若沒有完成遷移，相關請求將會被系統拒絕。新的 API v2 會透過 OAuth 2.0 來進行驗證，並且支援批次請求。\n\n> 「讓每一次整合，都更快一步。」\n\n```bash\ncurl -H \"Authorization: Bearer $TOKEN\" https://api.example.com/v2/status\n```\n\n| 項目 | API v1 | API v2 |\n| --- | --- | --- |\n| 狀態 | deprecated | current |\n| 驗證 | API key | OAuth 2.0 |",
+      "expected_output": "A polished Markdown technical notice for Hong Kong engineers in Hong Kong Traditional Chinese written style, preserving headings, blockquote slogan, fenced curl code, table structure, and exact technical tokens, with no preference hint.",
+      "files": [],
+      "expectations": [
+        "保留 Markdown 標題、引用區塊、bash fenced code block、curl 指令及表格結構。",
+        "逐字保留 API v1、API v2、OAuth 2.0、API key、deprecated、current、2026-09-30 與 $TOKEN 等技術值、版本號、狀態及日期。",
+        "保留引文「讓每一次整合，都更快一步。」原樣不改。",
+        "未要求使用者知道或輸入 region flag 時直接按香港地域處理，不把 region=TW、region=CN 等參考變體誤套入；不把香港書面語改寫成粵語口語。",
+        "只改善正文的句法與銜接，不把技術術語換成泛稱，也不添加原文沒有的技術要求。",
+        "因使用者明確要求只回傳修訂後 Markdown 及不要提示，不加入地域／語體提示。"
+      ]
+    }
+  ]
+}
