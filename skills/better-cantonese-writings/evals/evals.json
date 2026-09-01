@@ -40,6 +40,46 @@
         "只改善正文的句法與銜接，不把技術術語換成泛稱，也不添加原文沒有的技術要求。",
         "因使用者明確要求只回傳修訂後 Markdown 及不要提示，不加入地域／語體提示。"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "請為香港讀者把以下句子潤稿成自然、清楚的香港中文書面語，不要改寫成粵語口語。請綜合診斷並修正不必要數量詞、名詞化和英文式被動等歐化句式，但保留「全球化」這個自然且有用的詞。只回傳修訂稿，不要解釋。\n\n家朗是一個小五學生。今天常識課，他進行關於全球化的匯報，表現出色，被老師稱讚。",
+      "expected_output": "A concise polished version in Hong Kong Traditional Chinese written style that preserves the meaning and keeps「全球化」, while improving quantity wording, nominalization, predicate/verb-object collocation, and passive structure; the revised predicate and required object must remain natural and complete, without requiring one fixed sentence; revised draft only.",
+      "files": [],
+      "expectations": [
+        "保留家朗是小五學生、在今天常識課作全球化匯報、表現出色並獲老師稱讚等核心語意，不添加原文沒有的事實。",
+        "改善名詞化後，必須重新檢查謂語、動詞搭配、及物性及必要賓語，讓句子成分完整、動賓關係自然；不得接受「就全球化作匯報」這類不完整或不自然的句子。",
+        "在多處結構上作出自然改善，涵蓋不必要數量詞、名詞化及英文式被動等至少兩類以上問題，而不是只替換一兩個單字；可用不同自然重寫方式，不把單一句子寫死為唯一答案。",
+        "可刪減或改寫「一個」、「進行」、「被」等歐化結構，但不得機械刪除所有可能帶有歐化色彩的詞語；應按語境保留自然、有效的表達。",
+        "保留「全球化」原詞及原有概念，不把它替換成其他地域用語或泛稱。",
+        "因使用者明確要求只回傳修訂稿，不加入地域／語體提示、分析或其他說明。"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "請把以下句子改寫成具體、自然的香港中文書面語，不要改寫成粵語口語。先理清人物的實際行為、前後因果和對工作的影響，再重寫內容；不要只把模糊詞逐字替換成另一組模糊詞。保留原意即可，不必只回傳修訂稿。完成後如沒有既定偏好，可在正文後加一句簡短的地域／語體能力提示，但提示不是必要正文內容。\n\n小明情商低，時常內耗，工作能力很拉胯。",
+      "expected_output": "A natural Hong Kong Traditional Chinese written-style revision that makes the person's interpersonal behavior, self-consuming worry, causal link, and work impact concrete without merely replacing vague labels; an optional brief non-blocking regional/register hint may follow.",
+      "files": [],
+      "expectations": [
+        "以可觀察的具體行為呈現「情商低」所指問題，例如不理解他人感受、溝通欠妥或處理分歧不當，而不是只換成另一個抽象標籤。",
+        "交代「內耗」的具體表現及其與工作受影響之間的因果脈絡，例如反覆猶豫、過度擔心或自我否定導致延誤、效率下降或難以作決定；因果須合理且不超出原意。",
+        "將「工作能力很拉胯」改為較自然、具體的香港中文書面語，說明工作表現如何受影響，不得只逐字替換成「不擅溝通／憂慮／很差」等另一組模糊詞。",
+        "保留原文對小明人際處理、心理狀態和工作表現欠佳的整體意思，不添加具體職業、事件或其他原文沒有的事實。",
+        "正文使用香港中文書面語，不使用粵語口語詞；可附簡短地域／語體提示，但提示不得取代改寫內容，也不應阻塞交付。"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "請把以下內容潤稿成自然、清楚的香港中文書面語，不要改寫成粵語口語。修正句子成分不完整、謂語／動詞使用不當、賓語不足，以及不自然的動賓搭配；不要添加原文沒有的事實。只回傳修訂稿，不要解釋。\n\n在他的座位上放了旅行的照片。\n對於這些不禮貌的行為，我不能不疑問。\n老師若能設身處地為學生著想，便能明白學生。\n舞台上，樂手盡情拉著小提琴和鋼琴。",
+      "expected_output": "A polished Hong Kong Traditional Chinese written-style revision that supplies omitted subjects or objects where needed and corrects predicate, verb, and verb-object collocations without adding facts; revised text only.",
+      "files": [],
+      "expectations": [
+        "為「在他的座位上放了旅行的照片」補回合適主語或重組句子，使誰放置照片及句子成分清楚；不得添加原文沒有的人物或事件細節。",
+        "修正「不能不疑問」的不當謂語／動詞，改用能表達原有質疑或不滿意思的自然書面語結構。",
+        "補足或改正「便能明白學生」的賓語，使老師明白學生的處境、感受或想法等原句指向清楚，但不引入原文沒有的新事實。",
+        "修正「拉著小提琴和鋼琴」的不自然動賓搭配，分別使用適合小提琴和鋼琴的動詞或同等自然的重組，保留樂手在舞台上演奏兩種樂器的原意。",
+        "四句均以香港中文書面語完成句法潤色，不加入解釋、地域／語體提示或其他正文以外內容。"
+      ]
     }
   ]
 }
