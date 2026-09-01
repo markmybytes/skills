@@ -58,7 +58,7 @@ Run from repository root. Apply fixes before verification.
 the project/user approves them. After approval they become project policy —
 remove this note. Replace or remove them with project-specific rules. -->
 
-### ✅ Always
+### Always
 
 - Read the documentation map and relevant linked docs before making edits.
 - Follow explicit user instruction over repository documentation when they conflict.
@@ -67,11 +67,11 @@ remove this note. Replace or remove them with project-specific rules. -->
 - Keep changes scoped and minimal.
 - Preserve single sources of truth; update owning docs when behavior or interfaces change.
 
-### ⚠️ Ask First
+### Ask First
 
 - Destructive, security-sensitive, or ambiguous changes.
 
-### 🚫 Never
+### Never
 
 - Commit secrets or local environment values.
 - Hand-edit generated, vendored, or protected files.

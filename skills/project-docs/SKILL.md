@@ -1,18 +1,20 @@
 ---
 name: project-docs
-description: Create, audit, refine, or consolidate project Markdown documentation. Use when asked to scaffold README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md, deployment docs, or a project documentation map. By default maintains README.md, AGENTS.md, and CONTRIBUTING.md; explicit user scope overrides that default.
+description: Create, audit, review, refine, or consolidate project Markdown documentation. Use when asked to scaffold, improve, or audit README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md, deployment docs, or a project documentation map; when documentation is stale, outdated, duplicated, missing, or inconsistent with the code; or when asked to review or update project docs in any way. By default maintains README.md, AGENTS.md, and CONTRIBUTING.md; explicit user scope overrides that default.
 ---
 
 # Project documentation
 
 Build, audit, refine, or consolidate project Markdown from user-provided requirements and
 existing content only. This skill manages project Markdown, not arbitrary prose, and does not
-discover or establish coding policy. Read relevant repository files to derive and verify in-scope
-docs: inspect source, config, tests, CI, and deployment files only as needed to document project
-purpose, stack, setup, commands, paths, and runtime behavior. Do not infer undocumented policy,
-coding style, architecture, or workflow; do not edit non-Markdown files. Never invent facts,
-policies, commands, paths, architecture, or workflow — replace placeholders only with
-user-provided facts or existing content.
+discover or establish coding policy.
+
+- **Ground in evidence**: inspect source, config, tests, CI, and deployment files only as needed
+  to derive and verify purpose, stack, setup, commands, paths, and runtime behavior.
+- **Never invent** facts, policies, commands, paths, architecture, or workflow — replace
+  placeholders only with user-provided facts or existing content.
+- **Do not infer** undocumented policy, coding style, architecture, or workflow — ask instead.
+- **Markdown only**: never edit non-Markdown files.
 
 Modes: **audit** (report ownership, duplication, gaps, stale claims), **scaffold** (missing baseline and justified optional docs), **refine** (preserve accurate facts), **consolidate** (duplicated or fragmented docs).
 
@@ -36,15 +38,19 @@ Use this sequence for every request: `CLASSIFY → GATHER → PLAN → ASK → E
   conflicting policy, normative `STYLE.md` rules. `lgtm`/`go`/`approve` authorizes execution; no
   second per-section gate. Audit mode skips approval.
 - **EXECUTE**: Apply the approved plan in order: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `STYLE.md`, then justified optional docs. No unplanned edits.
-- **VERIFY**: Update README/AGENTS documentation maps; verify links, anchors, paths, commands,
-  ownership, README profile, command executability, and that no placeholder, stale command,
-  fictional policy, or empty section remains; optional docs justified. Fact-check ports,
-  lockfiles, versions, commands, paths, and test locations against repository evidence or
-  user-confirmed facts; unresolved claims become questions or unknown, never guesses. Correct
-  false or stale claims in every in-scope document, including sections not otherwise modified.
-  Scan
-  edited skill-managed docs for duplicated operational facts, exempting `README.md`/`AGENTS.md`
-  audience-specific summaries. Report created, updated, unchanged, and blocked/user-needed items.
+- **VERIFY**: Work through a checklist, not one pass:
+  - Update README/AGENTS documentation maps on any add, remove, or rename.
+  - Verify links, anchors, paths, ownership, and README profile.
+  - Fact-check ports, lockfiles, versions, commands, paths, and test locations against
+    repository evidence or user-confirmed facts; unresolved claims become questions or
+    unknowns, never guesses.
+  - Correct false or stale claims in every in-scope document, including sections not
+    otherwise modified.
+  - Confirm command executability; no placeholder, stale command, fictional policy, or empty
+    section remains.
+  - Confirm optional docs are justified; scan edited skill-managed docs for duplicated
+    operational facts, exempting `README.md`/`AGENTS.md` audience-specific summaries.
+  - Report created, updated, unchanged, and blocked/user-needed items.
 
 ## Baseline documents
 
@@ -70,6 +76,11 @@ Recommend or create these only when user or project context justifies them; neve
 | `GOVERNANCE.md`      | Multiple maintainers need explicit decision rules.                     |
 | `docs/`              | Several detailed documents are needed.                                 |
 | `LICENSE`            | Public or distributed software needs license terms.                    |
+
+Some coding-agent tools look for their own instruction file instead of `AGENTS.md` (for
+example, Claude Code reads `CLAUDE.md`). When repository evidence shows such a tool, offer the
+user a one-line alias file that redirects to `AGENTS.md` (for example, `@AGENTS.md`); ask
+before creating it, and follow the tool's actual redirect syntax.
 
 ## README profile
 
@@ -138,10 +149,12 @@ Default ownership:
 | `SECURITY.md`     | Vulnerability reporting and security policy.                     |
 | `CHANGELOG.md`    | Version history.                                                 |
 
-Add a documentation map to both `README.md` and `AGENTS.md`: maps may repeat names and audience
-for their readers but must not duplicate operational facts. `README.md` uses concise linked
-bullets; `AGENTS.md` uses a table. Include only files that exist; update both maps on add,
-remove, or rename. Examples live in the templates.
+Add a documentation map to `AGENTS.md` always, as a table. In `README.md`, place the map in the
+developer onboarding flow (near setup/development) for developer-facing profiles; for
+user-facing profiles include it only when several documents exist, as concise linked bullets
+under Getting Started. Maps may repeat names and audience for their readers but must not
+duplicate operational facts. Include only files that exist; update maps on add, remove, or
+rename. Examples live in the templates.
 
 ## Writing rules
 

@@ -109,7 +109,9 @@ one exists. -->
 
 ### Documentation
 
-<!-- Keep only documents that exist; each linked document owns its details. -->
+<!-- Keep only documents that exist; each linked document owns its details.
+Include this map when the project has several documents; delete it for
+projects with only one or two docs. -->
 
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
 - [CONTRIBUTING.md](CONTRIBUTING.md) — Development workflow, testing, pull requests

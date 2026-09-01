@@ -32,8 +32,14 @@ require project choice. Add them as confirmed sections below, not here. -->
 
 ## Rule Priority
 
-<Include only confirmed project priorities, such as security, correctness,
-architecture, readability, and consistency.>
+<!-- Safe default from common practice; confirm with the project/user before
+keeping. Reorder or replace with project-specific priorities. -->
+
+1. Security
+2. Correctness
+3. Architecture
+4. Simplicity
+5. Local consistency
 
 ## Core Principles
 
