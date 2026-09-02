@@ -1,30 +1,31 @@
-<!-- Adaptive STYLE.md template. Keep only user-requested or user-confirmed sections; delete empty ones. -->
+<!-- REFERENCE SKELETON ONLY — for blank projects or as inspiration. Not the
+default shape: STYLE.md is contract-defined (see SKILL.md). When scaffolding,
+leave the <...> placeholders for the maintainer; delete a section only when
+the project has no such layer or concern. -->
 
 # STYLE.md - Coding Style Guide
 
-<Scope, audience, and authority of this guide.>
+<Scope, audience, and authority of this guide — this line is the ownership
+declaration the contract requires: what is canonical here, what links to
+another owner.>
 
-## Common Principles
+## Principles
 
-<!-- Optional before approval. Present these as suggestions; keep only if the
-project/user approves them. After approval they become project policy — remove
-this label and the note below. Replace or remove them with project-specific
-rules. -->
-
-> Optional defaults — safe baseline, not project policy. Confirm with the
-> project owner before keeping any. After approval, remove this note and the
-> label above.
+<!-- Starting defaults — not project policy until confirmed. Confirm with the
+project/user before keeping any; delete unconfirmed bullets. Replace or extend
+them with project-specific principles. -->
 
 - Security and correctness first.
 - Readable names and simple code over cleverness.
+- Follow existing project patterns before introducing new ones.
 - Explain why in comments, not what the code does.
-- Avoid speculative features and abstractions; justify an abstraction by current reuse or clarity.
+- YAGNI: avoid speculative features and abstractions; justify an abstraction by current reuse or clarity.
 - Keep responsibilities cohesive and coupling low.
-- Validate untrusted input at server boundaries; prefer allowlists where applicable.
+- Validate untrusted input at trust boundaries (network input, files, argv, environment); prefer allowlists where applicable.
 - Handle errors explicitly without leaking sensitive details.
 - Tests for meaningful behavior; tests should fail when that behavior breaks.
 - Update docs when behavior or public interfaces change.
-- Pin or review dependencies where relevant.
+- Dependencies must earn their maintenance cost; review before adding.
 
 <!-- Context-dependent: naming, placement, API contracts, error mechanisms,
 performance, E2E coverage, commit/semver, dependency, and deployment rules
@@ -40,10 +41,6 @@ keeping. Reorder or replace with project-specific priorities. -->
 3. Architecture
 4. Simplicity
 5. Local consistency
-
-## Core Principles
-
-- <Requested or user-confirmed project principle>
 
 ## Naming Conventions
 

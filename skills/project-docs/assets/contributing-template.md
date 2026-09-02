@@ -1,4 +1,6 @@
-<!-- Lean contribution guide. Add project-specific policy only when user-provided or confirmed. -->
+<!-- Lean contribution guide. Add project-specific policy only when user-provided or confirmed.
+Branch and commit conventions below are common-practice defaults behind the approval gate —
+confirm or replace them with project policy before they become normative. -->
 
 # Contributing
 

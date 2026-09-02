@@ -25,6 +25,15 @@
 <Executable setup commands>
 ```
 
+## Documentation
+
+<!-- Part of the developer onboarding flow; keep only documents that exist; each linked document owns its details. -->
+
+- [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Development workflow, testing, pull requests
+- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
+- [STYLE.md](STYLE.md) — Coding conventions
+
 ## Development
 
 | Command     | Purpose   |
@@ -38,15 +47,6 @@
 ```
 
 <Test database, fixture, environment, or CI notes that developers need.>
-
-## Documentation
-
-<!-- Keep only documents that exist; each linked document owns its details. -->
-
-- [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
-- [CONTRIBUTING.md](CONTRIBUTING.md) — Development workflow, testing, pull requests
-- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
-- [STYLE.md](STYLE.md) — Coding conventions
 
 ## Important Notes
 

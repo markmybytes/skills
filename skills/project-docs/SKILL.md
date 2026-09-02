@@ -1,6 +1,6 @@
 ---
 name: project-docs
-description: Create, audit, review, refine, or consolidate project Markdown documentation. Use when asked to scaffold, improve, or audit README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md, deployment docs, or a project documentation map; when documentation is stale, outdated, duplicated, missing, or inconsistent with the code; or when asked to review or update project docs in any way. By default maintains README.md, AGENTS.md, and CONTRIBUTING.md; explicit user scope overrides that default.
+description: Create, audit, review, refine, or consolidate project Markdown documentation. Use when asked to scaffold, improve, or audit README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md, deployment docs, or a project documentation map; when documentation is stale, outdated, duplicated, missing, or inconsistent with the code; or when asked to review project docs. By default maintains README.md, AGENTS.md, and CONTRIBUTING.md; explicit user scope overrides that default.
 ---
 
 # Project documentation
@@ -14,9 +14,10 @@ discover or establish coding policy.
 - **Never invent** facts, policies, commands, paths, architecture, or workflow — replace
   placeholders only with user-provided facts or existing content.
 - **Do not infer** undocumented policy, coding style, architecture, or workflow — ask instead.
-- **Markdown only**: never edit non-Markdown files.
+- **Documentation files only**: Markdown, plus `LICENSE` or tool-required agent-alias
+  files when the user approves them.
 
-Modes: **audit** (report ownership, duplication, gaps, stale claims), **scaffold** (missing baseline and justified optional docs), **refine** (preserve accurate facts), **consolidate** (duplicated or fragmented docs).
+Modes: **audit** (report ownership, duplication, gaps, stale claims — a STYLE.md review is this mode: read-only findings against the STYLE.md opinionated structure), **scaffold** (missing baseline and justified optional docs), **refine** (preserve accurate facts), **consolidate** (duplicated or fragmented docs).
 
 ## Interaction flow
 
@@ -35,7 +36,7 @@ Use this sequence for every request: `CLASSIFY → GATHER → PLAN → ASK → E
   migration docs unless in scope. Optional docs only when justified. Audit mode plans findings.
 - **ASK**: One approval request covering scope, docs, changes, optional docs, and safe template
   defaults that would become policy. Ask only blocking questions: README profile, missing facts,
-  conflicting policy, normative `STYLE.md` rules. `lgtm`/`go`/`approve` authorizes execution; no
+  and conflicting policy. `lgtm`/`go`/`approve` authorizes execution; no
   second per-section gate. Audit mode skips approval.
 - **EXECUTE**: Apply the approved plan in order: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `STYLE.md`, then justified optional docs. No unplanned edits.
 - **VERIFY**: Work through a checklist, not one pass:
@@ -66,7 +67,7 @@ Recommend or create these only when user or project context justifies them; neve
 
 | Document             | Create when                                                            |
 | -------------------- | ---------------------------------------------------------------------- |
-| `STYLE.md`           | Shared coding conventions are substantial or span multiple domains.    |
+| `STYLE.md`           | Always recommend when code conventions exist; create only on user approval. |
 | `DEPLOYMENT.md`      | Deployment, infrastructure, release, or recovery steps exist.          |
 | `SECURITY.md`        | The project is public or handles security-sensitive data or access.    |
 | `CHANGELOG.md`       | Consumers need maintained version history and releases are not enough. |
@@ -74,13 +75,14 @@ Recommend or create these only when user or project context justifies them; neve
 | `SUPPORT.md`         | Users need a support channel separate from issues.                     |
 | `ARCHITECTURE.md`    | System design would overload `README.md` or `STYLE.md`.                |
 | `GOVERNANCE.md`      | Multiple maintainers need explicit decision rules.                     |
-| `docs/`              | Several detailed documents are needed.                                 |
+| `docs/` directory    | Several detailed documents are needed.                                 |
 | `LICENSE`            | Public or distributed software needs license terms.                    |
 
 Some coding-agent tools look for their own instruction file instead of `AGENTS.md` (for
 example, Claude Code reads `CLAUDE.md`). When repository evidence shows such a tool, offer the
 user a one-line alias file that redirects to `AGENTS.md` (for example, `@AGENTS.md`); ask
-before creating it, and follow the tool's actual redirect syntax.
+before creating it, and follow the tool's actual redirect syntax — the alias file may be
+non-Markdown when the tool's format requires it (e.g. `.cursorrules`).
 
 ## README profile
 
@@ -120,14 +122,30 @@ Start from `assets/contributing-template.md` and common contribution practice; r
 with user-provided policy. Never invent Jira keys, branch prefixes, merge strategy, CLA
 requirements, reviewer rules, support channels, or security contacts — ask the user or keep common practice.
 
-## Build or assess STYLE.md
+## STYLE.md
 
-If missing, scaffold from `assets/style-template.md`, ask for project rules, and get approval
-before finalizing normative content. If present, refine or consolidate only what the user
-requested; treat template common principles as approved defaults after "lgtm"; for "implement"
-without details, use existing policy and ask only before adding new normative rules.
-`Architecture and Placement` owns placement and ownership rules, does not duplicate the
-navigation-only repository map in `AGENTS.md`; split large domain-specific rules into linked docs.
+STYLE.md encodes maintainer taste; this skill never authors or rewrites its content. Two
+jobs only — anything beyond them only on explicit user request:
+
+- **Scaffold**: create an empty skeleton from `assets/style-template.md` — section
+  structure plus Principles defaults as unconfirmed bullets. Leave every rule bullet for
+  the maintainer to write; never fill gaps. The opinionated structure below is the review
+  checklist, not scaffold content.
+- **Review**: check an existing STYLE.md against the opinionated structure and report
+  findings; review is read-only, fixes apply only when the user asks.
+
+The opinionated structure:
+
+- Rule priority order present — default Security → Correctness → Architecture →
+  Simplicity → Local consistency; any user-set order is fine.
+- Ownership declaration present — what is canonical here, what links to another owner;
+  placement rules do not duplicate the `AGENTS.md` repository map.
+- No operational facts duplicated from documents this skill owns — link to the owner.
+- Sections for layers or concerns the project does not have (e.g. frontend rules in a
+  CLI tool), dead sections, and leftover empty rule bullets in a mature STYLE.md are
+  findings — a fresh scaffold's placeholders are exempt.
+- Mechanical, lint-enforceable rules restated here instead of pointing at tool config are
+  findings.
 
 ## Ownership and documentation maps
 
@@ -169,6 +187,6 @@ rename. Examples live in the templates.
 - `assets/readme-developer-template.md`
 - `assets/agents-template.md`
 - `assets/contributing-template.md`
-- `assets/style-template.md`
+- `assets/style-template.md` — reference skeleton for blank projects, not the default shape
 
-Templates are default structural guides, not rigid output. Replace placeholders with user-provided or existing facts; delete inapplicable sections; never leave `<TODO>` markers. Optional template defaults (for example, `Common Agent Rules` or `Common Principles`) stay optional until project/user approval, then become policy.
+Templates are default structural guides, not rigid output. Replace placeholders with user-provided or existing facts; delete inapplicable sections; never leave `<TODO>` markers. Optional template defaults (for example, the `Principles` block or the `Boundaries` rules) stay optional until project/user approval, then become policy.
