@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+      "passed": false,
+      "evidence": "outputs=['README.md', 'docs/api.md', 'docs/architecture.md', 'docs/database.md', 'docs/deployment.md', 'docs/development.md', 'docs/modules.md', 'docs/setup.md']"
+    },
+    {
+      "text": "README follows the developer template's section structure",
+      "passed": false,
+      "evidence": "hits=['stack', 'quick start', 'documentation']"
+    },
+    {
+      "text": "AGENTS.md documentation map links only to Markdown files that exist",
+      "passed": false,
+      "evidence": "no links found"
+    },
+    {
+      "text": "Optional docs (DEPLOYMENT/STYLE/SECURITY) created only with justification, not invented policy",
+      "passed": true,
+      "evidence": "optional-created=['docs/deployment.md'] (justification required in report/plan)"
+    },
+    {
+      "text": "No invented facts: no fake badges/URLs/licenses",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Commands grounded in repo evidence (composer/php/artisan present where relevant)",
+      "passed": true,
+      "evidence": "grounded"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  }
+}

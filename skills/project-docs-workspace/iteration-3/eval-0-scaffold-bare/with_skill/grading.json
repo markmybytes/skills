@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "All four docs created incl. STYLE.md skeleton",
+      "passed": true,
+      "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+    },
+    {
+      "text": "Tooling (Ruff) not presented as stack/Built-With tech",
+      "passed": true,
+      "evidence": "built-has-ruff=False stack-section=no(user-facing)"
+    },
+    {
+      "text": "STYLE.md skeleton: placeholders + unconfirmed Principles + Rule Priority default",
+      "passed": true,
+      "evidence": "placeholders=True unconfirmed=True priority=True"
+    },
+    {
+      "text": "No invented facts: no badges/license claims without repo evidence",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "AGENTS.md doc map links only to Markdown files",
+      "passed": true,
+      "evidence": "links=['README.md', 'CONTRIBUTING.md', 'STYLE.md', 'STYLE.md']"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

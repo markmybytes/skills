@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+      "passed": true,
+      "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+    },
+    {
+      "text": "README follows the developer template's section structure exactly (headings present and in order)",
+      "passed": true,
+      "evidence": "hits=['scope', 'stack', 'prerequisites', 'quick start', 'documentation', 'development', 'testing']"
+    },
+    {
+      "text": "STYLE.md skeleton: placeholders + unconfirmed-labeled Principles + Rule Priority default",
+      "passed": true,
+      "evidence": "placeholders=True unconfirmed=True priority=True"
+    },
+    {
+      "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+      "passed": true,
+      "evidence": "concern-based"
+    },
+    {
+      "text": "AGENTS.md documentation map links only to files that exist",
+      "passed": true,
+      "evidence": "4 md links"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

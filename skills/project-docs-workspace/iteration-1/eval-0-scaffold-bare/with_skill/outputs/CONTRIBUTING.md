@@ -1,0 +1,37 @@
+# Contributing
+
+See [README.md](README.md) for setup and development commands.
+
+## Before You Start
+
+- Check existing issues and pull requests before opening a new one.
+- Discuss substantial feature changes before implementation.
+- Branch from the repository's default branch.
+
+## Branches and Commits
+
+Use a descriptive branch name. Keep each branch focused on one concern.
+
+Use [Conventional Commits](https://www.conventionalcommits.org/):
+
+```text
+<type>(<scope>): <description>
+```
+
+Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, and
+`perf`. Use `!` or a `BREAKING CHANGE:` footer for breaking changes.
+
+## Pull Requests
+
+- Keep one concern per pull request.
+- Explain what changed, why, and any important design decisions.
+- Add or update tests for behavior changes and bug fixes.
+- Update documentation when behavior, commands, or public interfaces change.
+- Run `ruff check src tests` and `pytest` before requesting review.
+- Address review feedback before merge.
+
+## Issues
+
+- Include versions, environment details, and a minimal reproduction for bugs.
+- Use the project's security process for vulnerabilities; do not disclose them
+  in public issues.

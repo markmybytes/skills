@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Only README.md is modified; all other files untouched",
+      "passed": true,
+      "evidence": "non-readme outputs=[]"
+    },
+    {
+      "text": "Install command corrected to: npm install -g csvtool",
+      "passed": true,
+      "evidence": "correct"
+    },
+    {
+      "text": "Usage shows the real subcommand syntax: csvtool filter --column <name> --eq <value> <file>",
+      "passed": true,
+      "evidence": "filter --column --eq present"
+    },
+    {
+      "text": "Node requirement corrected to 18+ (not 12)",
+      "passed": true,
+      "evidence": "node-mention=18"
+    },
+    {
+      "text": "Documents the head subcommand (previously missing)",
+      "passed": true,
+      "evidence": "head documented"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Findings follow the one-line format: location \u2014 what \u2192 fix, with severity tag",
+      "passed": true,
+      "evidence": "3 arrow-lines, 0 tagged, header-severity=True"
+    },
+    {
+      "text": "Every corrected file in outputs is listed and justified in report.md",
+      "passed": true,
+      "evidence": "corrected=['.agents/skills/style-review/SKILL.md', 'README.md', 'AGENTS.md'] listed=['.agents/skills/style-review/SKILL.md', 'README.md', 'AGENTS.md']"
+    },
+    {
+      "text": "Flags the stale _ide_helper.php composer-install claim in README.md",
+      "passed": true,
+      "evidence": "grep ide_helper in report"
+    },
+    {
+      "text": "Flags the stale ziggy runtime claim in AGENTS.md",
+      "passed": true,
+      "evidence": "grep ziggy"
+    },
+    {
+      "text": "Does not report README\u2194AGENTS audience-specific overlaps (verification/command tables) as SSoT violations",
+      "passed": false,
+      "evidence": "flagged overlap as violation"
+    },
+    {
+      "text": "Flags the missing LICENSE file (composer.json declares MIT)",
+      "passed": false,
+      "evidence": "grep LICENSE"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  }
+}

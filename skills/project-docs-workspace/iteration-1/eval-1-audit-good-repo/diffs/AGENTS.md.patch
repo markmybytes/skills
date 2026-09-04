@@ -1,0 +1,20 @@
+diff --git "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\AGENTS.md" "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\AGENTS.md"
+index 24f8568..e8e5790 100644
+--- "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\AGENTS.md"
++++ "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\AGENTS.md"
+@@ -28,7 +28,7 @@ Auto-fix first, then check for what remains.
+ | Frontend (Vue/TS) | `npm run format && npm run lint:fix` | `npm run type-check` |
+ | Bundling/runtime  | —                                    | `npm run build`      |
+ 
+-After changing routes, regenerate types with `php artisan ziggy:generate --types-only`. Always pass `--types-only` — the runtime `ziggy.js` is not used by this project (Inertia handles routing server-side) and must not be committed. CI checks `resources/js/ziggy.d.ts` freshness.
++After changing routes, regenerate types with `php artisan ziggy:generate --types-only`. Always pass `--types-only` — no runtime route script is generated or committed; the runtime `route()` helper comes from the `ziggy-js` package via `ZiggyVue` in `resources/js/app.ts`. CI checks `resources/js/ziggy.d.ts` freshness.
+ 
+ ## Architecture
+ 
+@@ -62,4 +62,4 @@ Details in [CONTRIBUTING.md](CONTRIBUTING.md) / [README.md](README.md); key fact
+ 
+ - Node via Volta (declared in `package.json`)
+ - Tailwind v4 + DaisyUI 5 configured inline in `resources/css/app.css` — no `tailwind.config.*`
+-- `.env.example` defaults to MySQL (configure DB for your instance before booting)
++- `.env.example` defaults to MySQL (configure DB for your instance before booting)
+\ No newline at end of file

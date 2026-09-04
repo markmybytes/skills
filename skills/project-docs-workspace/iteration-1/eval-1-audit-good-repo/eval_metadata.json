@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "audit-good-repo",
+  "prompt": "Please audit the documentation in this repository and report anything wrong, missing, or duplicated. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws",
+  "assertions": [
+    "Findings follow the one-line format: location — what → fix, with severity tag",
+    "Every corrected file in outputs is listed and justified in report.md",
+    "Flags the stale _ide_helper.php composer-install claim in README.md",
+    "Flags the stale ziggy runtime claim in AGENTS.md",
+    "Does not report README↔AGENTS audience-specific overlaps (verification/command tables) as SSoT violations",
+    "Flags the missing LICENSE file (composer.json declares MIT)"
+  ]
+}

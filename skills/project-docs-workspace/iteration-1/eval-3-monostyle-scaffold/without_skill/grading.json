@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+      "passed": true,
+      "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+    },
+    {
+      "text": "STYLE.md rule sections are empty placeholders for the maintainer, not authored Go rules",
+      "passed": true,
+      "evidence": "placeholders=True authored-rules=False"
+    },
+    {
+      "text": "STYLE.md Principles are labeled unconfirmed/optional defaults, not policy",
+      "passed": false,
+      "evidence": "no unconfirmed/policy label found"
+    },
+    {
+      "text": "STYLE.md contains the Rule Priority default (Security \u2192 Correctness \u2192 Architecture \u2192 Simplicity \u2192 Local consistency)",
+      "passed": false,
+      "evidence": "priority list incomplete"
+    },
+    {
+      "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+      "passed": true,
+      "evidence": "concern-based"
+    },
+    {
+      "text": "AGENTS.md documentation map links only to files that exist",
+      "passed": false,
+      "evidence": "no links found in doc map"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  }
+}

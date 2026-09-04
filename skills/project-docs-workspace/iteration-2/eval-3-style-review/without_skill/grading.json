@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Read-only: STYLE.md itself is not modified or rewritten",
+      "passed": true,
+      "evidence": "no STYLE.md copy in outputs"
+    },
+    {
+      "text": "Findings follow the one-line format with severity tags",
+      "passed": false,
+      "evidence": "arrow-lines=2 tagged=0"
+    },
+    {
+      "text": "Report is short (under 60 lines \u2014 TLDR fix)",
+      "passed": false,
+      "evidence": "66 lines"
+    },
+    {
+      "text": "SSoT direction correct: STYLE.md is owner of coding practices \u2014 report never recommends stripping STYLE.md in favor of AGENTS.md links",
+      "passed": true,
+      "evidence": "STYLE-as-owner respected"
+    },
+    {
+      "text": "Flags lint-enforceable rules vs ESLint config",
+      "passed": false,
+      "evidence": "grep eslint"
+    },
+    {
+      "text": "Covers structure points (rule priority, ownership declaration)",
+      "passed": false,
+      "evidence": "incomplete"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 4,
+    "total": 6,
+    "pass_rate": 0.33
+  }
+}

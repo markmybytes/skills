@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "monostyle-scaffold",
+  "prompt": "This is my Go CLI project. Set up its documentation — README, AGENTS.md, CONTRIBUTING.md, and a STYLE.md skeleton I can fill in with this project's conventions. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\notesync-cli",
+  "assertions": [
+    "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+    "STYLE.md rule sections are empty placeholders for the maintainer, not authored Go rules",
+    "STYLE.md Principles are labeled unconfirmed/optional defaults, not policy",
+    "STYLE.md contains the Rule Priority default (Security → Correctness → Architecture → Simplicity → Local consistency)",
+    "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+    "AGENTS.md documentation map links only to files that exist"
+  ]
+}

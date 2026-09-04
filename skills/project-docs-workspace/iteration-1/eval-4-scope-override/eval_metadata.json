@@ -1,0 +1,12 @@
+{
+  "eval_id": 4,
+  "eval_name": "scope-override",
+  "prompt": "The README in this repo is out of date — the commands in it don't work anymore. Please fix the README, and don't touch anything else. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\csvtool-stale-readme",
+  "assertions": [
+    "Only README.md is modified; all other files untouched",
+    "Install command corrected to: npm install -g csvtool",
+    "Usage shows the real subcommand syntax: csvtool filter --column <name> --eq <value> <file>",
+    "Node requirement corrected to 18+ (not 12)",
+    "Documents the head subcommand (previously missing)"
+  ]
+}

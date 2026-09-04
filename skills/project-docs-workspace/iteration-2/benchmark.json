@@ -1,0 +1,635 @@
+{
+  "metadata": {
+    "skill_name": "project-docs",
+    "skill_path": "C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs",
+    "executor_model": "opencode-go/glm-5.3-flash",
+    "analyzer_model": "opencode-go/glm-5.3-flash",
+    "timestamp": "2026-09-04T00:00:00Z",
+    "evals_run": [
+      "eval-0-scaffold-bare",
+      "eval-1-docless-scaffold-fullstack",
+      "eval-2-docless-scaffold-desktop",
+      "eval-3-style-review",
+      "eval-4-monostyle-scaffold",
+      "eval-5-scope-override"
+    ],
+    "runs_per_configuration": 1,
+    "previous_workspace": "C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1"
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-bare",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md']"
+        },
+        {
+          "text": "Stack section lists only language/runtime/framework \u2014 Click/Pillow/Ruff not presented as stack",
+          "passed": false,
+          "evidence": "stack-section=yes inflated=['Click', 'Pillow']"
+        },
+        {
+          "text": "README follows the developer template's section structure (headings present and in order)",
+          "passed": true,
+          "evidence": "hits=['scope', 'stack', 'prerequisites', 'quick start', 'documentation', 'development', 'testing']"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": true,
+          "evidence": "2 md links"
+        },
+        {
+          "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+          "passed": true,
+          "evidence": "clean"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-bare",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.2,
+        "passed": 1,
+        "failed": 4,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": false,
+          "evidence": "outputs=['README.md']"
+        },
+        {
+          "text": "Stack section lists only language/runtime/framework \u2014 Click/Pillow/Ruff not presented as stack",
+          "passed": false,
+          "evidence": "stack-section=missing inflated=[]"
+        },
+        {
+          "text": "README follows the developer template's section structure (headings present and in order)",
+          "passed": false,
+          "evidence": "hits=['development']"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": false,
+          "evidence": "no links found"
+        },
+        {
+          "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+          "passed": true,
+          "evidence": "clean"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "docless-scaffold-fullstack",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'DEPLOYMENT.md', 'README.md']"
+        },
+        {
+          "text": "README follows the developer template's section structure",
+          "passed": true,
+          "evidence": "hits=['scope', 'stack', 'prerequisites', 'quick start', 'documentation', 'development', 'testing']"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": true,
+          "evidence": "3 md links"
+        },
+        {
+          "text": "Optional docs (DEPLOYMENT/STYLE/SECURITY) created only with justification, not invented policy",
+          "passed": true,
+          "evidence": "optional-created=['DEPLOYMENT.md'] (justification required in report/plan)"
+        },
+        {
+          "text": "No invented facts: no fake badges/URLs/licenses",
+          "passed": true,
+          "evidence": "clean"
+        },
+        {
+          "text": "Commands grounded in repo evidence (composer/php/artisan present where relevant)",
+          "passed": true,
+          "evidence": "grounded"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "docless-scaffold-fullstack",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": false,
+          "evidence": "outputs=['README.md', 'docs/api.md', 'docs/architecture.md', 'docs/database.md', 'docs/deployment.md', 'docs/development.md', 'docs/modules.md', 'docs/setup.md']"
+        },
+        {
+          "text": "README follows the developer template's section structure",
+          "passed": false,
+          "evidence": "hits=['stack', 'quick start', 'documentation']"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": false,
+          "evidence": "no links found"
+        },
+        {
+          "text": "Optional docs (DEPLOYMENT/STYLE/SECURITY) created only with justification, not invented policy",
+          "passed": true,
+          "evidence": "optional-created=['docs/deployment.md'] (justification required in report/plan)"
+        },
+        {
+          "text": "No invented facts: no fake badges/URLs/licenses",
+          "passed": true,
+          "evidence": "clean"
+        },
+        {
+          "text": "Commands grounded in repo evidence (composer/php/artisan present where relevant)",
+          "passed": true,
+          "evidence": "grounded"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "docless-scaffold-desktop",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md']"
+        },
+        {
+          "text": "README follows the user-facing template structure (About/Built With/Usage/Getting Started pattern)",
+          "passed": true,
+          "evidence": "hits=['about', 'built with', 'usage', 'getting started', 'documentation', 'license']"
+        },
+        {
+          "text": "Documentation map present in AGENTS.md with links to existing files",
+          "passed": true,
+          "evidence": "2 md links"
+        },
+        {
+          "text": "No invented tech-badge slugs (repo-status shields fine, tech badges must be real generated markup)",
+          "passed": true,
+          "evidence": "no badges"
+        },
+        {
+          "text": "License stated correctly (GPL-2.0 from repo LICENSE)",
+          "passed": true,
+          "evidence": "GPL stated"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "docless-scaffold-desktop",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": false,
+          "evidence": "outputs=['README.md', 'docs/architecture.md', 'docs/development.md', 'docs/usage.md']"
+        },
+        {
+          "text": "README follows the user-facing template structure (About/Built With/Usage/Getting Started pattern)",
+          "passed": false,
+          "evidence": "hits=['documentation', 'license']"
+        },
+        {
+          "text": "Documentation map present in AGENTS.md with links to existing files",
+          "passed": false,
+          "evidence": "no links found"
+        },
+        {
+          "text": "No invented tech-badge slugs (repo-status shields fine, tech badges must be real generated markup)",
+          "passed": true,
+          "evidence": "no badges"
+        },
+        {
+          "text": "License stated correctly (GPL-2.0 from repo LICENSE)",
+          "passed": true,
+          "evidence": "GPL stated"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "style-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read-only: STYLE.md itself is not modified or rewritten",
+          "passed": true,
+          "evidence": "no STYLE.md copy in outputs"
+        },
+        {
+          "text": "Findings follow the one-line format with severity tags",
+          "passed": [
+            "- `STYLE.md` Layout Breakpoints (L131-133) \u2014 claims \"`md:` and `xl:` only; `sm:` and `lg:` are skipped\", but code uses `hidden sm:inline` (DriverEditor.vue:255,281, a show/hide element the section itself claims in scope) and `lg:max-w-2xl` / `lg:text-sm` / `lg:size-8` / `lg:mt-4` (DriverFormComponent.vue:139, MatchRuleFormComponent.vue:73,115, ProgressStepper.vue:73,93,104); the rationale even admits `sm:` is \"always-on\" (`stale`) \u2192 correct the rule or list explicit exceptions",
+            "- `STYLE.md` i18n prefix table (L179) \u2014 `toast` row cites `toastSaved` / `toastNoUpdate`, but no `toast*` key exists in `en.json` or `zh_Hant_HK.json`; real toast calls use `msgSaved`, `msgNoUpdate`, `warnPathRequired`, `errCheckUpdateFailed` (`stale`) \u2192 drop the row or replace with keys that exist",
+            "- `STYLE.md` Async example (L110) \u2014 `t('toast.noHardwareInfo')` references a non-existent nested key and contradicts the section's own \"no nesting, no dots\" rule (`stale`) \u2192 use a real key, e.g. `msgNoUpdate`",
+            "- `STYLE.md` Frontend \"Basics\" (L52-57) \u2014 restates rules already enforced as errors in `frontend/eslint.config.js`: `<script setup lang=\"ts\">`/no Options API (`vue/block-lang`, `vue/component-api-style`), type-based props/emits (`vue/define-props-declaration`, `vue/define-emits-declaration`), block order (`vue/block-order`), blank lines between template tags (`vue/padding-line-between-tags`) (`structure`) \u2192 point at lint config instead of restating mechanical rules",
+            "- `STYLE.md` Quick Review Checklist (L244-265) \u2014 restates nearly every rule above, including the lint-enforceable ones, doubling the maintenance surface; two of its items (\"no intermediate variables\", \"Porter DB lifecycle\") duplicate other sections (`structure`) \u2192 trim to non-mechanical, non-duplicated items",
+            "- `STYLE.md` Database bullet (L224) \u2014 \"Porter closes and reopens the DB on import\" duplicates `AGENTS.md` Key constraints (operational fact owned by AGENTS.md) (`duplicate`) \u2192 replace with a link to AGENTS.md",
+            "- `STYLE.md` Constraints (L46) \u2014 restates `npm run lint` / `npm run format` commands owned by `AGENTS.md` Commands; `go fmt` / `go vet` is repeated three times across L46, L204, L250 (`duplicate`) \u2192 keep in AGENTS.md, link from STYLE.md",
+            "- `STYLE.md` ownership declaration (L3) \u2014 present (\"Canonical conventions for install-it\") but does not state what links to another owner; operational facts that belong in AGENTS.md are instead duplicated here (see above) (`structure`, minor) \u2192 one line pointing to AGENTS.md for commands/architecture",
+            "- `frontend/README.md` \u2014 untouched Vite template boilerplate (\"This template should help get you started developing with Vue 3 in Vite\") (`stale`) \u2192 replace with project-specific sub-README or remove; not a STYLE.md issue"
+          ],
+          "evidence": "arrow-lines=10 tagged=9"
+        },
+        {
+          "text": "Report is short (under 60 lines \u2014 TLDR fix)",
+          "passed": true,
+          "evidence": "31 lines"
+        },
+        {
+          "text": "SSoT direction correct: STYLE.md is owner of coding practices \u2014 report never recommends stripping STYLE.md in favor of AGENTS.md links",
+          "passed": false,
+          "evidence": "violation found"
+        },
+        {
+          "text": "Flags lint-enforceable rules vs ESLint config",
+          "passed": true,
+          "evidence": "grep eslint"
+        },
+        {
+          "text": "Covers structure points (rule priority, ownership declaration)",
+          "passed": true,
+          "evidence": "covered"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "style-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.33,
+        "passed": 2,
+        "failed": 4,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read-only: STYLE.md itself is not modified or rewritten",
+          "passed": true,
+          "evidence": "no STYLE.md copy in outputs"
+        },
+        {
+          "text": "Findings follow the one-line format with severity tags",
+          "passed": false,
+          "evidence": "arrow-lines=2 tagged=0"
+        },
+        {
+          "text": "Report is short (under 60 lines \u2014 TLDR fix)",
+          "passed": false,
+          "evidence": "66 lines"
+        },
+        {
+          "text": "SSoT direction correct: STYLE.md is owner of coding practices \u2014 report never recommends stripping STYLE.md in favor of AGENTS.md links",
+          "passed": true,
+          "evidence": "STYLE-as-owner respected"
+        },
+        {
+          "text": "Flags lint-enforceable rules vs ESLint config",
+          "passed": false,
+          "evidence": "grep eslint"
+        },
+        {
+          "text": "Covers structure points (rule priority, ownership declaration)",
+          "passed": false,
+          "evidence": "incomplete"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "monostyle-scaffold",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+        },
+        {
+          "text": "README follows the developer template's section structure exactly (headings present and in order)",
+          "passed": true,
+          "evidence": "hits=['scope', 'stack', 'prerequisites', 'quick start', 'documentation', 'development', 'testing']"
+        },
+        {
+          "text": "STYLE.md skeleton: placeholders + unconfirmed-labeled Principles + Rule Priority default",
+          "passed": true,
+          "evidence": "placeholders=True unconfirmed=True priority=True"
+        },
+        {
+          "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+          "passed": true,
+          "evidence": "concern-based"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to files that exist",
+          "passed": true,
+          "evidence": "4 md links"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "monostyle-scaffold",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+        },
+        {
+          "text": "README follows the developer template's section structure exactly (headings present and in order)",
+          "passed": false,
+          "evidence": "hits=['development']"
+        },
+        {
+          "text": "STYLE.md skeleton: placeholders + unconfirmed-labeled Principles + Rule Priority default",
+          "passed": false,
+          "evidence": "placeholders=True unconfirmed=False priority=False"
+        },
+        {
+          "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+          "passed": true,
+          "evidence": "concern-based"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to files that exist",
+          "passed": false,
+          "evidence": "no links found"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "scope-override",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Only README.md is modified; all other files untouched",
+          "passed": true,
+          "evidence": "non-readme outputs=[]"
+        },
+        {
+          "text": "Facts corrected: npm install -g csvtool (not csvtool-cli)",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Usage shows real subcommand syntax: filter --column/--eq and head",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Node requirement corrected to 18+",
+          "passed": true,
+          "evidence": "18+ stated"
+        },
+        {
+          "text": "README restructured toward the template's heading scheme",
+          "passed": false,
+          "evidence": "hits=['install', 'usage']"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "scope-override",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Only README.md is modified; all other files untouched",
+          "passed": true,
+          "evidence": "non-readme outputs=[]"
+        },
+        {
+          "text": "Facts corrected: npm install -g csvtool (not csvtool-cli)",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Usage shows real subcommand syntax: filter --column/--eq and head",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Node requirement corrected to 18+",
+          "passed": true,
+          "evidence": "18+ stated"
+        },
+        {
+          "text": "README restructured toward the template's heading scheme",
+          "passed": false,
+          "evidence": "hits=['install', 'usage']"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9,
+        "stddev": 0.1,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.44,
+        "stddev": 0.19,
+        "min": 0.2,
+        "max": 0.8
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.46",
+      "time_seconds": "n/a",
+      "tokens": "n/a"
+    }
+  },
+  "notes": [
+    "Timing/tokens not captured (task notifications carry no metrics in this environment); time_seconds/tokens are zeros and deltas n/a. Single run per configuration - no variance data.",
+    "Docless-scaffold evals (1, 2) are the user's clarified intent: delete all docs, rebuild from scratch, compare against the real (user-approved) docs as review baseline. They discriminate hard: 1.0 vs 0.5 and 1.0 vs 0.4. Baselines sprawled into docs/ trees (8 files) or invented content; with-skill runs stayed on the template baseline + justified optional docs.",
+    "eval-2 with_skill 1.0: user-facing template order (Usage before Getting Started), real repo-status shields only, GNU GPL v2 license stated from repo LICENSE. Baseline 0.4: no doc map, no license, template drift.",
+    "Three honest with_skill failures, each traced to a skill gap fixed in SKILL.md AFTER these runs (so iteration-3 should close them): eval-0 Stack section still listed Click/Pillow as stack (now: profile rule says language/runtime/framework only); eval-3 report still sent STYLE.md facts to AGENTS.md as owner for lint commands and DB-lifecycle contracts (now: ownership table states style-related commands/constraints are STYLE.md facts; AGENTS.md commands cover dev/build/test workflow only); eval-5 refine kept the stale README's structure (now: refine mode includes restructuring to template headings).",
+    "eval-5 remains non-discriminating on facts (both fixed the stale commands correctly); the discriminator is template restructure, which only the skill contract demands.",
+    "eval-3 baseline (0.33) rewrote STYLE.md claims as its own structure review without the 5-point contract and missed the read-only/format rules.",
+    "Style-review report length after the TLDR fix: with_skill report is well under the 60-line cap."
+  ]
+}

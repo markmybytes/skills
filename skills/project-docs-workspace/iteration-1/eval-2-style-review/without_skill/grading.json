@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Read-only: STYLE.md itself is not modified or rewritten",
+      "passed": true,
+      "evidence": "no STYLE.md copy in outputs"
+    },
+    {
+      "text": "Findings follow the one-line format with severity tags",
+      "passed": false,
+      "evidence": "arrow-lines=2 tagged=0"
+    },
+    {
+      "text": "Review covers all five structure points: rule priority, ownership declaration, SSoT duplication, section naming, lint-enforceable rules",
+      "passed": true,
+      "evidence": "all five covered"
+    },
+    {
+      "text": "Flags operational facts duplicated from AGENTS.md",
+      "passed": true,
+      "evidence": "grep duplicate+AGENTS"
+    },
+    {
+      "text": "Flags rules that the existing ESLint config already enforces",
+      "passed": true,
+      "evidence": "grep eslint"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

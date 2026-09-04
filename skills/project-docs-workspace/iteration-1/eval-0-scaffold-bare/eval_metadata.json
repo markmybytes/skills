@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "eval_name": "scaffold-bare",
+  "prompt": "I've got this small Python project and basically no docs in it. Can you set up the project documentation for me? The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\imgtools-bare",
+  "assertions": [
+    "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+    "README documents only commands that exist in the repo (pip install -e ., ruff/pytest, imgtools resize/convert)",
+    "AGENTS.md documentation map links only to Markdown files that exist",
+    "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+    "CONTRIBUTING.md links to README for setup instead of duplicating install commands"
+  ]
+}

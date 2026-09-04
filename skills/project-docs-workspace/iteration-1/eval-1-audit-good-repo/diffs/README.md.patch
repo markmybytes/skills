@@ -1,0 +1,19 @@
+diff --git "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\README.md" "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\README.md"
+index a22257e..8c3d8da 100644
+--- "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\README.md"
++++ "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\README.md"
+@@ -80,11 +80,11 @@ Run **auto-fix** tools first, then **check** tools for remaining issues:
+ For IDE autocomplete. Neither is a runtime file.
+ 
+ - `php artisan ziggy:generate --types-only` → `resources/js/ziggy.d.ts`. Type definitions for `route()` calls. Committed to git; CI checks freshness.
+-- `php artisan ide-helper:generate` → `_ide_helper.php`. Docblocks for facades, models, and helpers. Gitignored; auto-runs on `composer install` / `update`.
++- `php artisan ide-helper:generate` → `_ide_helper.php`. Docblocks for facades, models, and helpers. Gitignored; auto-runs on `composer update` (via `post-update-cmd`).
+ 
+ ## Documentation
+ 
+ - [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
+ - [CONTRIBUTING.md](CONTRIBUTING.md) — Development workflow, testing, pull requests
+ - [STYLE.md](STYLE.md) — Architecture constraints, code conventions, API contract
+-- [AGENTS.md](AGENTS.md) — AI coding agent instructions (for Cursor, Claude Code, etc.)
++- [AGENTS.md](AGENTS.md) — AI coding agent instructions (for Cursor, Claude Code, etc.)
+\ No newline at end of file

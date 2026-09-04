@@ -1,0 +1,6 @@
+{
+  "eval_id": 5,
+  "eval_name": "scope-override",
+  "prompt": "The README in this repo is out of date — the commands in it don't work anymore. Please fix the README, and don't touch anything else. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\csvtool-stale-readme",
+  "assertions": []
+}

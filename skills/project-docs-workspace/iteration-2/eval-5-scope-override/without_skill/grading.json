@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Only README.md is modified; all other files untouched",
+      "passed": true,
+      "evidence": "non-readme outputs=[]"
+    },
+    {
+      "text": "Facts corrected: npm install -g csvtool (not csvtool-cli)",
+      "passed": true,
+      "evidence": "correct"
+    },
+    {
+      "text": "Usage shows real subcommand syntax: filter --column/--eq and head",
+      "passed": true,
+      "evidence": "correct"
+    },
+    {
+      "text": "Node requirement corrected to 18+",
+      "passed": true,
+      "evidence": "18+ stated"
+    },
+    {
+      "text": "README restructured toward the template's heading scheme",
+      "passed": false,
+      "evidence": "hits=['install', 'usage']"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

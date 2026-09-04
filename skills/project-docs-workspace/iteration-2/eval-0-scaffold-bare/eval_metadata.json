@@ -1,0 +1,6 @@
+{
+  "eval_id": 0,
+  "eval_name": "scaffold-bare",
+  "prompt": "I've got this small Python project and basically no docs in it. Can you set up the project documentation for me? The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\imgtools-bare",
+  "assertions": []
+}

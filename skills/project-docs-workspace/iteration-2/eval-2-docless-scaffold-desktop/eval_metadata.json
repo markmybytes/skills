@@ -1,0 +1,6 @@
+{
+  "eval_id": 2,
+  "eval_name": "docless-scaffold-installit",
+  "prompt": "All documentation in this repo was deleted. Rebuild the project documentation from scratch — whatever baseline docs it needs. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\desktop-docless-ws",
+  "assertions": []
+}

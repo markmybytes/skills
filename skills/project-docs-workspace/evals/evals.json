@@ -1,0 +1,47 @@
+{
+  "skill_name": "project-docs",
+  "evals": [
+    {
+      "id": 0,
+      "name": "scaffold-bare",
+      "prompt": "I've got this small Python project and basically no docs in it. Can you set up the project documentation for me? The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\imgtools-bare",
+      "expected_output": "README.md (developer-facing, template sectioning), AGENTS.md, CONTRIBUTING.md created; Stack section lists only language/runtime/framework (Click/Pillow/Ruff are dependencies/tooling, not stack); facts derived from repo evidence only.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "docless-scaffold-fullstack",
+      "prompt": "All documentation in this repo was deleted. Rebuild the project documentation from scratch — whatever baseline docs it needs. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\fullstack-docless-ws",
+      "expected_output": "Baseline docs rebuilt from repo evidence; quality comparable to the original (real) docs which serve as the review baseline; no invented policy; template sectioning followed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "docless-scaffold-desktop",
+      "prompt": "All documentation in this repo was deleted. Rebuild the project documentation from scratch — whatever baseline docs it needs. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\desktop-docless-ws",
+      "expected_output": "Baseline docs rebuilt from repo evidence; user-facing README profile with real badges only; quality comparable to the original (real) docs which serve as the review baseline.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "style-review",
+      "prompt": "Can you review the STYLE.md in this repo and tell me if its structure is any good? Just report findings, don't change anything. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\desktop-style-ws",
+      "expected_output": "Read-only findings report; coding-practice facts duplicated in AGENTS.md must be flagged with STYLE.md as the OWNER (recommend trimming AGENTS.md or linking, never stripping STYLE.md); report is short (one line per finding).",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "monostyle-scaffold",
+      "prompt": "This is my Go CLI project. Set up its documentation — README, AGENTS.md, CONTRIBUTING.md, and a STYLE.md skeleton I can fill in with this project's conventions. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\notesync-cli",
+      "expected_output": "Four docs following template sectioning exactly (headings and order); STYLE.md skeleton with empty rules; no invented Go rules.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "name": "scope-override",
+      "prompt": "The README in this repo is out of date — the commands in it don't work anymore. Please fix the README, and don't touch anything else. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\csvtool-stale-readme",
+      "expected_output": "Only README.md modified; corrected facts (csvtool install, subcommand syntax, Node 18+); restructured to the developer README template's headings.",
+      "files": []
+    }
+  ]
+}

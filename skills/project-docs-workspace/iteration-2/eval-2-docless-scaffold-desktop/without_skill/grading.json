@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Creates baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+      "passed": false,
+      "evidence": "outputs=['README.md', 'docs/architecture.md', 'docs/development.md', 'docs/usage.md']"
+    },
+    {
+      "text": "README follows the user-facing template structure (About/Built With/Usage/Getting Started pattern)",
+      "passed": false,
+      "evidence": "hits=['documentation', 'license']"
+    },
+    {
+      "text": "Documentation map present in AGENTS.md with links to existing files",
+      "passed": false,
+      "evidence": "no links found"
+    },
+    {
+      "text": "No invented tech-badge slugs (repo-status shields fine, tech badges must be real generated markup)",
+      "passed": true,
+      "evidence": "no badges"
+    },
+    {
+      "text": "License stated correctly (GPL-2.0 from repo LICENSE)",
+      "passed": true,
+      "evidence": "GPL stated"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

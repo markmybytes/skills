@@ -1,0 +1,29 @@
+diff --git "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\CONTRIBUTING.md" "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\CONTRIBUTING.md"
+index f3f8284..0ca4153 100644
+--- "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\h730-audit-ws\\CONTRIBUTING.md"
++++ "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-1-audit-good-repo\\with_skill\\outputs\\CONTRIBUTING.md"
+@@ -4,7 +4,7 @@
+ 
+ See [README.md](README.md#quick-start) for clone-to-running and prerequisites.
+ 
+-> **Test database:** PHPUnit uses `h730_toolbox_test` (see `phpunit.xml`). `RefreshDatabase` creates it if missing and runs migrations. Keep MySQL running; local tools use `DB_DATABASE` from `.env`.
++> **Test database:** see [AGENTS.md](AGENTS.md#testing) — PHPUnit uses `h730_toolbox_test` (see `phpunit.xml`), and that database must pre-exist in MySQL; `RefreshDatabase` runs migrations against it but does not create it.
+ 
+ ## Development Workflow
+ 
+@@ -60,7 +60,7 @@ Use **Squash and Merge** only. Keep the PR title, including its Jira key, as the
+ - [ ] Branch is based on `main`, named `IT-xxx-description`, and addresses a single concern
+ - [ ] Auto-fix tools and check commands have been run (see [README.md](README.md#quality--testing))
+ - [ ] New features include tests; bug fixes include regression tests
+-- [ ] Documentation is updated if behaviour or interfaces change (README, STYLE, DEPLOYMENT)
++- [ ] Documentation is updated if behaviour or interfaces change (README, AGENTS, CONTRIBUTING, STYLE, DEPLOYMENT)
+ - [ ] PR title follows Conventional Commits and ends with the Jira key
+ 
+ ### When Opening
+@@ -68,4 +68,4 @@ Use **Squash and Merge** only. Keep the PR title, including its Jira key, as the
+ - Title your PR with a concise Conventional Commit title ending with the Jira key
+ - Mark as **Draft** while work is in progress
+ - Ensure CI checks (test + build workflows) are green
+-- Use **Squash and Merge** (see [Merging](#merging))
++- Use **Squash and Merge** (see [Merging](#merging))
+\ No newline at end of file

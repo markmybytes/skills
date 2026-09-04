@@ -1,0 +1,537 @@
+﻿{
+  "metadata": {
+    "skill_name": "project-docs",
+    "skill_path": "C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs",
+    "executor_model": "opencode-go/glm-5.3-flash",
+    "analyzer_model": "opencode-go/glm-5.3-flash",
+    "timestamp": "2026-09-04T00:00:00Z",
+    "evals_run": [
+      "eval-0-scaffold-bare",
+      "eval-1-audit-good-repo",
+      "eval-2-style-review",
+      "eval-3-monostyle-scaffold",
+      "eval-4-scope-override"
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-bare",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md']"
+        },
+        {
+          "text": "README documents only commands that exist in the repo (pip install -e ., ruff/pytest, imgtools resize/convert)",
+          "passed": true,
+          "evidence": "good_cmds=True suspicious=[]"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": true,
+          "evidence": "2 md links ok"
+        },
+        {
+          "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+          "passed": true,
+          "evidence": "clean"
+        },
+        {
+          "text": "CONTRIBUTING.md links to README for setup instead of duplicating install commands",
+          "passed": true,
+          "evidence": "install-cmd-copies=0 links-README=True"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "scaffold-bare",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+          "passed": false,
+          "evidence": "outputs=['README.md']"
+        },
+        {
+          "text": "README documents only commands that exist in the repo (pip install -e ., ruff/pytest, imgtools resize/convert)",
+          "passed": true,
+          "evidence": "good_cmds=True suspicious=[]"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to Markdown files that exist",
+          "passed": false,
+          "evidence": "no links found in doc map"
+        },
+        {
+          "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+          "passed": true,
+          "evidence": "clean"
+        },
+        {
+          "text": "CONTRIBUTING.md links to README for setup instead of duplicating install commands",
+          "passed": false,
+          "evidence": "install-cmd-copies=0 links-README=False"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "audit-good-repo",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Findings follow the one-line format: location \u2014 what \u2192 fix, with severity tag",
+          "passed": true,
+          "evidence": "8 arrow-lines, 5 tagged, header-severity=False"
+        },
+        {
+          "text": "Every corrected file in outputs is listed and justified in report.md",
+          "passed": true,
+          "evidence": "corrected=['CONTRIBUTING.md', 'README.md', 'AGENTS.md'] listed=['CONTRIBUTING.md', 'README.md', 'AGENTS.md']"
+        },
+        {
+          "text": "Flags the stale _ide_helper.php composer-install claim in README.md",
+          "passed": true,
+          "evidence": "grep ide_helper in report"
+        },
+        {
+          "text": "Flags the stale ziggy runtime claim in AGENTS.md",
+          "passed": true,
+          "evidence": "grep ziggy"
+        },
+        {
+          "text": "Does not report README\u2194AGENTS audience-specific overlaps (verification/command tables) as SSoT violations",
+          "passed": true,
+          "evidence": "exemption respected"
+        },
+        {
+          "text": "Flags the missing LICENSE file (composer.json declares MIT)",
+          "passed": true,
+          "evidence": "grep LICENSE"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "audit-good-repo",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Findings follow the one-line format: location \u2014 what \u2192 fix, with severity tag",
+          "passed": true,
+          "evidence": "3 arrow-lines, 0 tagged, header-severity=True"
+        },
+        {
+          "text": "Every corrected file in outputs is listed and justified in report.md",
+          "passed": true,
+          "evidence": "corrected=['.agents/skills/style-review/SKILL.md', 'README.md', 'AGENTS.md'] listed=['.agents/skills/style-review/SKILL.md', 'README.md', 'AGENTS.md']"
+        },
+        {
+          "text": "Flags the stale _ide_helper.php composer-install claim in README.md",
+          "passed": true,
+          "evidence": "grep ide_helper in report"
+        },
+        {
+          "text": "Flags the stale ziggy runtime claim in AGENTS.md",
+          "passed": true,
+          "evidence": "grep ziggy"
+        },
+        {
+          "text": "Does not report README\u2194AGENTS audience-specific overlaps (verification/command tables) as SSoT violations",
+          "passed": false,
+          "evidence": "flagged overlap as violation"
+        },
+        {
+          "text": "Flags the missing LICENSE file (composer.json declares MIT)",
+          "passed": false,
+          "evidence": "grep LICENSE"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "style-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read-only: STYLE.md itself is not modified or rewritten",
+          "passed": true,
+          "evidence": "no STYLE.md copy in outputs"
+        },
+        {
+          "text": "Findings follow the one-line format with severity tags",
+          "passed": true,
+          "evidence": "10 arrow-lines, 5 tagged, header-severity=False"
+        },
+        {
+          "text": "Review covers all five structure points: rule priority, ownership declaration, SSoT duplication, section naming, lint-enforceable rules",
+          "passed": true,
+          "evidence": "all five covered"
+        },
+        {
+          "text": "Flags operational facts duplicated from AGENTS.md",
+          "passed": true,
+          "evidence": "grep duplicate+AGENTS"
+        },
+        {
+          "text": "Flags rules that the existing ESLint config already enforces",
+          "passed": true,
+          "evidence": "grep eslint"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "style-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Read-only: STYLE.md itself is not modified or rewritten",
+          "passed": true,
+          "evidence": "no STYLE.md copy in outputs"
+        },
+        {
+          "text": "Findings follow the one-line format with severity tags",
+          "passed": false,
+          "evidence": "arrow-lines=2 tagged=0"
+        },
+        {
+          "text": "Review covers all five structure points: rule priority, ownership declaration, SSoT duplication, section naming, lint-enforceable rules",
+          "passed": true,
+          "evidence": "all five covered"
+        },
+        {
+          "text": "Flags operational facts duplicated from AGENTS.md",
+          "passed": true,
+          "evidence": "grep duplicate+AGENTS"
+        },
+        {
+          "text": "Flags rules that the existing ESLint config already enforces",
+          "passed": true,
+          "evidence": "grep eslint"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "monostyle-scaffold",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+        },
+        {
+          "text": "STYLE.md rule sections are empty placeholders for the maintainer, not authored Go rules",
+          "passed": true,
+          "evidence": "placeholders=True authored-rules=False"
+        },
+        {
+          "text": "STYLE.md Principles are labeled unconfirmed/optional defaults, not policy",
+          "passed": true,
+          "evidence": "label found"
+        },
+        {
+          "text": "STYLE.md contains the Rule Priority default (Security \u2192 Correctness \u2192 Architecture \u2192 Simplicity \u2192 Local consistency)",
+          "passed": true,
+          "evidence": "all five terms present"
+        },
+        {
+          "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+          "passed": true,
+          "evidence": "concern-based"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to files that exist",
+          "passed": true,
+          "evidence": "4 md links ok"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "monostyle-scaffold",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Creates all four docs: README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md",
+          "passed": true,
+          "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md', 'STYLE.md']"
+        },
+        {
+          "text": "STYLE.md rule sections are empty placeholders for the maintainer, not authored Go rules",
+          "passed": true,
+          "evidence": "placeholders=True authored-rules=False"
+        },
+        {
+          "text": "STYLE.md Principles are labeled unconfirmed/optional defaults, not policy",
+          "passed": false,
+          "evidence": "no unconfirmed/policy label found"
+        },
+        {
+          "text": "STYLE.md contains the Rule Priority default (Security \u2192 Correctness \u2192 Architecture \u2192 Simplicity \u2192 Local consistency)",
+          "passed": false,
+          "evidence": "priority list incomplete"
+        },
+        {
+          "text": "STYLE.md uses concern-based sections, not a Backend/Frontend layer split",
+          "passed": true,
+          "evidence": "concern-based"
+        },
+        {
+          "text": "AGENTS.md documentation map links only to files that exist",
+          "passed": false,
+          "evidence": "no links found in doc map"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "scope-override",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Only README.md is modified; all other files untouched",
+          "passed": true,
+          "evidence": "non-readme outputs=[]"
+        },
+        {
+          "text": "Install command corrected to: npm install -g csvtool",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Usage shows the real subcommand syntax: csvtool filter --column <name> --eq <value> <file>",
+          "passed": true,
+          "evidence": "filter --column --eq present"
+        },
+        {
+          "text": "Node requirement corrected to 18+ (not 12)",
+          "passed": true,
+          "evidence": "node-mention=18"
+        },
+        {
+          "text": "Documents the head subcommand (previously missing)",
+          "passed": true,
+          "evidence": "head documented"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "scope-override",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Only README.md is modified; all other files untouched",
+          "passed": true,
+          "evidence": "non-readme outputs=[]"
+        },
+        {
+          "text": "Install command corrected to: npm install -g csvtool",
+          "passed": true,
+          "evidence": "correct"
+        },
+        {
+          "text": "Usage shows the real subcommand syntax: csvtool filter --column <name> --eq <value> <file>",
+          "passed": true,
+          "evidence": "filter --column --eq present"
+        },
+        {
+          "text": "Node requirement corrected to 18+ (not 12)",
+          "passed": true,
+          "evidence": "node-mention=18"
+        },
+        {
+          "text": "Documents the head subcommand (previously missing)",
+          "passed": true,
+          "evidence": "head documented"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.67,
+        "stddev": 0.21,
+        "min": 0.4,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "stddev": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.33",
+      "time_seconds": "n/a",
+      "tokens": "n/a"
+    }
+  },
+  "notes": [
+    "Timing/tokens were not captured: task completion notifications in this environment carried no metrics, so time_seconds/tokens are zeros and deltas are n/a.",
+    "Scaffold and audit modes discriminate strongly: eval-0 1.0 vs 0.4 and eval-3 1.0 vs 0.5 (baseline wrote only a README, no doc map, no rule-priority default, no unconfirmed-defaults labeling); eval-1 1.0 vs 0.67.",
+    "eval-1 without_skill false positive: it flagged the README<->AGENTS verification/command-table overlap as an SSoT violation - the audience-summary exemption is a real differentiator of the skill.",
+    "eval-1 with_skill caught the missing LICENSE gap (composer.json declares MIT); baseline missed it.",
+    "eval-2 (STYLE.md review) is a weak discriminator (1.0 vs 0.8): the baseline also caught the AGENTS.md duplications and ESLint-covered rules. The skill's edge here is the 5-point structure coverage and the read-only contract, not finding discovery.",
+    "eval-4 (scope override) is non-discriminating (1.0 vs 1.0): a simple fact-fix task both handle correctly. Keep it as a scope-discipline regression canary.",
+    "eval-5 (private desktop-app repo full-docs audit, user-requested) ran with_skill only (5/5; 30 findings, 6 corrected files) and is excluded from the benchmark means because it has no baseline counterpart.",
+    "All with_skill runs complied with the STYLE.md two-job contract: no authored rules, read-only reviews, empty skeletons.",
+    "Single run per configuration - no variance data; rerun flaky-looking evals before trusting deltas."
+  ]
+}

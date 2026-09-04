@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "report.md lists every corrected file and justifies each change",
+      "passed": true,
+      "evidence": "corrected=['frontend/README.md', 'README.md', 'readme/README.zh_Hant.md', 'build/README.md', 'HANDOFF.md', 'AGENTS.md'] all listed"
+    },
+    {
+      "text": "Findings follow the one-line format with severity tags",
+      "passed": true,
+      "evidence": "36 arrow-lines, 35 tagged, header-severity=False"
+    },
+    {
+      "text": "Read-only on repo: corrected versions written only to outputs",
+      "passed": true,
+      "evidence": "repo untouched by task instruction; outputs-only writes"
+    },
+    {
+      "text": "STYLE.md not rewritten (skill never authors STYLE.md content)",
+      "passed": true,
+      "evidence": "no STYLE.md in outputs"
+    },
+    {
+      "text": "Items needing user facts are isolated at the end of the report",
+      "passed": true,
+      "evidence": "user-fact section present"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

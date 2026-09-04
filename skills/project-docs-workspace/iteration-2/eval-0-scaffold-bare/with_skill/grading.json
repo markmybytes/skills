@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+      "passed": true,
+      "evidence": "outputs=['AGENTS.md', 'CONTRIBUTING.md', 'README.md']"
+    },
+    {
+      "text": "Stack section lists only language/runtime/framework \u2014 Click/Pillow/Ruff not presented as stack",
+      "passed": false,
+      "evidence": "stack-section=yes inflated=['Click', 'Pillow']"
+    },
+    {
+      "text": "README follows the developer template's section structure (headings present and in order)",
+      "passed": true,
+      "evidence": "hits=['scope', 'stack', 'prerequisites', 'quick start', 'documentation', 'development', 'testing']"
+    },
+    {
+      "text": "AGENTS.md documentation map links only to Markdown files that exist",
+      "passed": true,
+      "evidence": "2 md links"
+    },
+    {
+      "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+      "passed": true,
+      "evidence": "clean"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

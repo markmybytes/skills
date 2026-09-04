@@ -1,0 +1,12 @@
+{
+  "eval_id": 5,
+  "eval_name": "installit-audit",
+  "prompt": "Audit the project documentation in this repository (README.md, AGENTS.md, STYLE.md, HANDOFF.md, readme/ translations, frontend/README.md, and any other Markdown) and report anything wrong, missing, or duplicated. Repo: C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\installit-style-ws",
+  "assertions": [
+    "report.md lists every corrected file and justifies each change",
+    "Findings follow the one-line format with severity tags",
+    "Read-only on repo: corrected versions written only to outputs",
+    "STYLE.md not rewritten (skill never authors STYLE.md content)",
+    "Items needing user facts are isolated at the end of the report"
+  ]
+}

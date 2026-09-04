@@ -1,0 +1,140 @@
+diff --git "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\installit-style-ws\\HANDOFF.md" "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-5-installit-audit\\with_skill\\outputs\\HANDOFF.md"
+index 14bb98b..93e371b 100644
+--- "a/C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\installit-style-ws\\HANDOFF.md"
++++ "b/C:\\Users\\User\\Documents\\Repositories\\skills\\skills\\project-docs-workspace\\iteration-1\\eval-5-installit-audit\\with_skill\\outputs\\HANDOFF.md"
+@@ -1,97 +1,70 @@
+-# pkg/update/ refactor handoff
++# pkg/update/ refactor record
+ 
+-This document captures the outcome of a self-update package review: bugs found, design decisions made, and the target architecture. It is a working checklist for the refactor, not a finished design spec. Background: `pkg/update/` powers the in-app self-updater for the Wails v2 Windows desktop app — downloads release ZIP, swaps the executable, deploys `internals/` on next startup.
++This document records the outcome of the self-update package review and refactor: bugs found, decisions made, and the shipped architecture. The refactor is **complete** — the architecture and fixes below are implemented in the current code, not pending. Background: `pkg/update/` powers the in-app self-updater for the Wails v2 Windows desktop app — downloads release ZIP, verifies its SHA-256, swaps the executable, deploys `internals/` on next startup.
+ 
+ ## Goal
+ 
+-Keep the updater package **simple, organized, and canonical**. No unnecessary complexity. Reuse existing patterns before adding new ones. Stdlib over dependencies. One way to do each thing. If a fix needs a new abstraction, it almost certainly doesn't need it. Prefer deletion over addition.
++Keep the updater package **simple, organized, and canonical**. No unnecessary complexity. Reuse existing patterns before adding new ones. Stdlib over dependencies. One way to do each thing. Prefer deletion over addition.
+ 
+-## Architecture (final)
++## Architecture (implemented)
+ 
+-| Phase | When | Why |
++| Phase | Where | Notes |
+ |---|---|---|
+-| `applyStagedUpdates()` | `main()` **before** `wails.Run(...)` | No WV2 yet → no internals locks. Idempotent. |
+-| `TriggerNativeUpdate` | User click → `os.Exit(0)` | Two-phase exe swap, runs in old exe context |
+-| `OnStartup` | Post-Wails | Check-for-update only. No file mutations. |
++| `ApplyStagedUpdates(dirRoot)` | `main()` **before** `wails.Run(...)` (`main.go:114`) | No WebView2 yet → no internals locks. Idempotent, safe to re-run on every launch. |
++| `TriggerNativeUpdate` | User click → `os.Exit(0)` (`pkg/update/update.go:142-217`) | Two-phase exe swap, runs in old exe context. |
++| Update check | Frontend-triggered (`frontend/src/pages/app-info.vue` calls `CheckForUpdates`) | No file mutations. `OnStartup` does not check for updates. |
+ 
+ Pre-Wails apply avoids Windows file locks entirely:
+-- `.old` exe: WV2 ghost processes from old exe can hold it briefly → retry loop (30s budget).
+-- internals files: only locked when WV2 starts loading them → free pre-Wails.
++- `.old` exe: WebView2 ghost processes from old exe can hold it briefly → retry loop (30s budget, 300 × 100ms).
++- internals files: only locked when WebView2 starts loading them → free pre-Wails.
+ - new exe itself: locked (current process), but apply doesn't touch it.
+ 
+-## Deploy policy (final)
++## Deploy policy (implemented)
+ 
+-- **Swap phase** (`TriggerNativeUpdate`): `install-it.exe` only
+-- **Apply phase** (`applyStagedUpdates`): `install-it.exe.old` cleanup + `internals/` two-phase replace
+-- Anything else in staged zip root → explicit error `errUpdateUnexpectedRoot`
++- **Swap phase** (`TriggerNativeUpdate`): `install-it.exe` only.
++- **Apply phase** (`ApplyStagedUpdates`): `install-it.exe.old` cleanup + `internals/` two-phase replace.
++- Unknown root entries in the staged zip are extracted but **silently ignored** by apply (only `internals/` is deployed; the whole stage dir is scrubbed afterwards). The earlier fail-loudly policy (`errUpdateUnexpectedRoot`) was deliberately removed in the simplification pass — extract accepts any root entry, and SHA-256 verification already covers tampered zips.
+ 
+-## Bugs to fix (priority order)
++## Resolved bugs
+ 
+-### 1. Swallowed IO errors — `pkg/update/update.go:217-225, 243, 247, 253-256`
+-**Extract phase**: check every error, abort on first failure. Half-extracted = corrupt deploy, no recovery.
++All items below shipped in the current code.
+ 
+-**Apply phase**: swallow `RemoveAll`/`Rename` errors + log. Exe already swapped, internals failure ≠ brick (app runs on old internals). Surface to UI ("update downloaded, restart to retry"), still clean stage dir. Next cycle redownloads.
++### 1. Swallowed IO errors — extract + apply phases
++**Extract phase**: every IO error is surfaced, abort on first failure (`extractZipToDir`, `pkg/update/update.go:316-364`). Half-extracted = corrupt deploy, no recovery.
+ 
+-### 2. HTTP status check + timeout — `pkg/update/update.go:69-90, 131-136`
+-No status check, no client timeout. 403/404/rate-limit decode as "no update".
+-Inject `http.Client{Timeout: 30*time.Second}`, check `StatusCode != 200`, return `errUpdateInfoUnavailable` for non-200.
++**Apply phase**: recovery-state-machine failure paths are silent (best-effort) — the next launch retries. Exe already swapped, internals failure ≠ brick (app runs on old internals).
+ 
+-### 3. Checksum validation — requires CI changes
+-Ship `install-it-x64.zip.sha256` alongside release asset. Updater downloads both, verifies before extract. ~10 lines in `.github/workflows/build_and_release.yml`.
++### 2. HTTP status check + timeout — `pkg/update/update.go:22, 33-38`
++`http.Client{Timeout: 30 * time.Second}`; non-200 → `errUpdateInfoUnavailable` (`update.go:79-81, 98-100, 149-151`).
+ 
+-### 4. Stale `.update_stage` — `pkg/update/update.go:149-153`
+-`os.RemoveAll(stageDir)` before extract to prevent leftover payload bleed.
++### 3. Checksum validation — `pkg/update/update.go:165-183`
++CI ships `install-it.<build-name>.zip.sha256` alongside release assets (`build_and_release.yml`). Updater downloads both, verifies via `utils.VerifySHA256` before extract.
+ 
+-### 5. Move apply to pre-Wails — `main.go` + `pkg/update/update.go`
+-- Rename `CheckAndApplyUpdates` → `applyStagedUpdates`. Move call from `OnStartup` to `main()` **before** `wails.Run(...)`.
+-- Drop `init()` call entirely.
+-- Bump `.old` retry loop from 10s → **30s** budget for WV2 ghosts.
++### 4. Stale `.update_stage` — `pkg/update/update.go:185-186`
++`os.RemoveAll(stageDir)` before extract prevents leftover payload bleed.
+ 
+-### 6. Two-phase commit for internals apply — `pkg/update/update.go:181-225`
+-Move `live → .old` first, then `staged → live`. Only delete `.old` after both succeeded. Rollback if phase 2 fails.
++### 5. Apply moved to pre-Wails — `main.go:114`, `pkg/update/update.go:226-314`
++`CheckAndApplyUpdates` renamed to the free function `ApplyStagedUpdates(dirRoot)`, called from `main()` **before** `wails.Run(...)`. `init()` call dropped. `.old` retry loop bumped to **30s**.
+ 
+-### 7. Idempotent state recovery — `pkg/update/update.go`
+-Apply must be safe to re-run after crash. Detect partial state, complete or rollback:
++### 6. Two-phase commit for internals apply — `pkg/update/update.go:270-290`
++`live → .old` first, then `staged → live`. `.old` deleted only after both succeed. Best-effort rollback if phase 2 fails.
+ 
+-```go
+-staged := ".update_stage/internals"
+-oldLive := "internals.old"
+-live := "internals"
++### 7. Idempotent state recovery — `pkg/update/update.go:238-268`
++Apply is safe to re-run after crash. The state machine detects partial states (`staged` / `internals.old` / `internals`), and `install-it.exe.old` presence discriminates a pending deploy from an interrupted extract. Cases handled: finish mid-swap, discard interrupted-extract leftovers, restore from `.old`, drop orphaned backup.
+ 
+-switch {
+-case exists(staged) && !exists(live) && exists(oldLive):
+-    // crash mid-swap, finish phase 2
+-    os.Rename(staged, live)
+-    os.RemoveAll(oldLive)
+-case exists(staged) && exists(live):
+-    // staged leftover from interrupted extract
+-    os.RemoveAll(staged)
+-case !exists(staged) && !exists(live) && exists(oldLive):
+-    // staged gone, restore from .old
+-    os.Rename(oldLive, live)
+-case exists(staged) && !exists(live) && !exists(oldLive):
+-    // first deploy
+-    os.Rename(staged, live)
+-}
+-```
++### 8. RPC contract — `frontend/src/components/UpdateModal.vue:143`
++`.then(Quit())` removed. `TriggerNativeUpdate(selectedUrl)` never resolves (calls `os.Exit(0)`); callers handle `.catch`/`.finally` only.
+ 
+-### 8. RPC contract — `frontend/src/components/UpdateModal.vue:145`
+-Remove `.then(Quit())`. `TriggerNativeUpdate` calls `os.Exit(0)`; never returns.
+-
+-### 9. Deploy policy enforcement — `pkg/update/update.go`
+-```go
+-if !strings.EqualFold(name, "internals") {
+-    return errcode.Newf("errUpdateUnexpectedRoot", map[string]any{"entry": name})
+-}
+-```
++### 9. Deploy policy
++Originally planned as a fail-loudly `errUpdateUnexpectedRoot` gate; **reverted by decision** in the simplification pass — unknown root entries pass through extract and are scrubbed with the stage dir (see Deploy policy above).
+ 
+ ## Decisions
+ 
+ - **Semver parse failure** → silent no-update (user-confirmed).
+-- **Prerelease picker** → use `prerelease: true` filter on `/releases`; drops drafts automatically.
+-- **Drafts vs prereleases** → separate GH concepts; drafts hidden entirely, prereleases flagged. `prerelease:true` filter excludes both unwanted.
++- **Prerelease picker** → `/releases` list with `preferPreRelease`; drafts are excluded by GitHub.
++- **Drafts vs prereleases** → separate GH concepts; drafts hidden entirely, prereleases flagged.
+ - **Internals overlay vs full replace** → full replace. Updater trusts the package; CI owns packaging.
+-- **`.old` retry budget** → 30s. Longer than current 10s for slow WV2 ghost cleanup.
++- **`.old` retry budget** → 30s. Longer than the original 10s for slow WebView2 ghost cleanup.
+ - **Apply swallows internals IO errors** → user-confirmed. Stage cleanup proceeds, next cycle redownloads.
+ 
+ ## Skipped (ponytail)

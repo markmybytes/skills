@@ -1,0 +1,6 @@
+{
+  "eval_id": 1,
+  "eval_name": "docless-scaffold-h730",
+  "prompt": "All documentation in this repo was deleted. Rebuild the project documentation from scratch — whatever baseline docs it needs. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\fullstack-docless-ws",
+  "assertions": []
+}

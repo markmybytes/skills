@@ -1,0 +1,6 @@
+{
+  "eval_id": 4,
+  "eval_name": "monostyle-scaffold",
+  "prompt": "This is my Go CLI project. Set up its documentation — README, AGENTS.md, CONTRIBUTING.md, and a STYLE.md skeleton I can fill in with this project's conventions. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\notesync-cli",
+  "assertions": []
+}

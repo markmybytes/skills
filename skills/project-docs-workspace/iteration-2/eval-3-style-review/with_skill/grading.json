@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "Read-only: STYLE.md itself is not modified or rewritten",
+      "passed": true,
+      "evidence": "no STYLE.md copy in outputs"
+    },
+    {
+      "text": "Findings follow the one-line format with severity tags",
+      "passed": [
+        "- `STYLE.md` Layout Breakpoints (L131-133) \u2014 claims \"`md:` and `xl:` only; `sm:` and `lg:` are skipped\", but code uses `hidden sm:inline` (DriverEditor.vue:255,281, a show/hide element the section itself claims in scope) and `lg:max-w-2xl` / `lg:text-sm` / `lg:size-8` / `lg:mt-4` (DriverFormComponent.vue:139, MatchRuleFormComponent.vue:73,115, ProgressStepper.vue:73,93,104); the rationale even admits `sm:` is \"always-on\" (`stale`) \u2192 correct the rule or list explicit exceptions",
+        "- `STYLE.md` i18n prefix table (L179) \u2014 `toast` row cites `toastSaved` / `toastNoUpdate`, but no `toast*` key exists in `en.json` or `zh_Hant_HK.json`; real toast calls use `msgSaved`, `msgNoUpdate`, `warnPathRequired`, `errCheckUpdateFailed` (`stale`) \u2192 drop the row or replace with keys that exist",
+        "- `STYLE.md` Async example (L110) \u2014 `t('toast.noHardwareInfo')` references a non-existent nested key and contradicts the section's own \"no nesting, no dots\" rule (`stale`) \u2192 use a real key, e.g. `msgNoUpdate`",
+        "- `STYLE.md` Frontend \"Basics\" (L52-57) \u2014 restates rules already enforced as errors in `frontend/eslint.config.js`: `<script setup lang=\"ts\">`/no Options API (`vue/block-lang`, `vue/component-api-style`), type-based props/emits (`vue/define-props-declaration`, `vue/define-emits-declaration`), block order (`vue/block-order`), blank lines between template tags (`vue/padding-line-between-tags`) (`structure`) \u2192 point at lint config instead of restating mechanical rules",
+        "- `STYLE.md` Quick Review Checklist (L244-265) \u2014 restates nearly every rule above, including the lint-enforceable ones, doubling the maintenance surface; two of its items (\"no intermediate variables\", \"Porter DB lifecycle\") duplicate other sections (`structure`) \u2192 trim to non-mechanical, non-duplicated items",
+        "- `STYLE.md` Database bullet (L224) \u2014 \"Porter closes and reopens the DB on import\" duplicates `AGENTS.md` Key constraints (operational fact owned by AGENTS.md) (`duplicate`) \u2192 replace with a link to AGENTS.md",
+        "- `STYLE.md` Constraints (L46) \u2014 restates `npm run lint` / `npm run format` commands owned by `AGENTS.md` Commands; `go fmt` / `go vet` is repeated three times across L46, L204, L250 (`duplicate`) \u2192 keep in AGENTS.md, link from STYLE.md",
+        "- `STYLE.md` ownership declaration (L3) \u2014 present (\"Canonical conventions for install-it\") but does not state what links to another owner; operational facts that belong in AGENTS.md are instead duplicated here (see above) (`structure`, minor) \u2192 one line pointing to AGENTS.md for commands/architecture",
+        "- `frontend/README.md` \u2014 untouched Vite template boilerplate (\"This template should help get you started developing with Vue 3 in Vite\") (`stale`) \u2192 replace with project-specific sub-README or remove; not a STYLE.md issue"
+      ],
+      "evidence": "arrow-lines=10 tagged=9"
+    },
+    {
+      "text": "Report is short (under 60 lines \u2014 TLDR fix)",
+      "passed": true,
+      "evidence": "31 lines"
+    },
+    {
+      "text": "SSoT direction correct: STYLE.md is owner of coding practices \u2014 report never recommends stripping STYLE.md in favor of AGENTS.md links",
+      "passed": false,
+      "evidence": "violation found"
+    },
+    {
+      "text": "Flags lint-enforceable rules vs ESLint config",
+      "passed": true,
+      "evidence": "grep eslint"
+    },
+    {
+      "text": "Covers structure points (rule priority, ownership declaration)",
+      "passed": true,
+      "evidence": "covered"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.83
+  }
+}

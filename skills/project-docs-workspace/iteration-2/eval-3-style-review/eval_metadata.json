@@ -1,0 +1,6 @@
+{
+  "eval_id": 3,
+  "eval_name": "style-review",
+  "prompt": "Can you review the STYLE.md in this repo and tell me if its structure is any good? Just report findings, don't change anything. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\desktop-style-ws",
+  "assertions": []
+}

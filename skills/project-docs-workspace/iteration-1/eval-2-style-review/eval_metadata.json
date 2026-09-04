@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "style-review",
+  "prompt": "Can you review the STYLE.md in this repo and tell me if its structure is any good? Just report findings, don't change anything. The repo is at C:\\Users\\User\\AppData\\Local\\Temp\\opencode\\project-docs-evals\\fixtures\\installit-style-ws",
+  "assertions": [
+    "Read-only: STYLE.md itself is not modified or rewritten",
+    "Findings follow the one-line format with severity tags",
+    "Review covers all five structure points: rule priority, ownership declaration, SSoT duplication, section naming, lint-enforceable rules",
+    "Flags operational facts duplicated from AGENTS.md",
+    "Flags rules that the existing ESLint config already enforces"
+  ]
+}

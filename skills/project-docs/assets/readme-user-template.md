@@ -69,9 +69,9 @@ one exists. -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE EXAMPLES -->
+<!-- USAGE -->
 
-## Usage Examples
+## Usage
 
 ### <Workflow or feature>
 
@@ -82,6 +82,14 @@ one exists. -->
 ```
 
 <Screenshot, output, or second usage mode when a real one exists.>
+
+<!-- For long or secondary examples, collapse them with <details>:
+<details>
+  <summary>[Example] <description></summary>
+
+  <content>
+</details>
+Keep the main flow visible; hide only supplementary material. -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

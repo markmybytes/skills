@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Creates all three baseline docs: README.md, AGENTS.md, CONTRIBUTING.md",
+      "passed": false,
+      "evidence": "outputs=['README.md']"
+    },
+    {
+      "text": "README documents only commands that exist in the repo (pip install -e ., ruff/pytest, imgtools resize/convert)",
+      "passed": true,
+      "evidence": "good_cmds=True suspicious=[]"
+    },
+    {
+      "text": "AGENTS.md documentation map links only to Markdown files that exist",
+      "passed": false,
+      "evidence": "no links found in doc map"
+    },
+    {
+      "text": "No invented facts: no license claims, badges, or repo URLs absent from the repo",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "CONTRIBUTING.md links to README for setup instead of duplicating install commands",
+      "passed": false,
+      "evidence": "install-cmd-copies=0 links-README=False"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}
