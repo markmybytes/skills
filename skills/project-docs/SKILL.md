@@ -27,17 +27,18 @@ Use this sequence for every request: `CLASSIFY → GATHER → PLAN → ASK → E
 - **GATHER**: Read in-scope Markdown, matching asset templates, and relevant repository evidence
   (package manifests, lockfiles, root config, test directories, CI/deployment files) to derive
   and verify purpose, stack, setup, commands, paths, and runtime behavior. Adjacent Markdown
-  (status, migration docs) is reference-only, not edited unless explicitly in scope. Record
-  missing facts, conflicts, and justified optional docs.
+  (status, migration docs, sub-directory READMEs) is reference-only, not edited unless
+  explicitly in scope. Record missing facts, conflicts, and justified optional docs.
 - **PLAN**: Plan creation or updates aligned to templates, preserving accurate facts and project
   policy, removing empty/inapplicable sections. Detect duplicated operational facts across
   in-scope, skill-managed docs; choose one owner; replace other copies with links, except
   audience-specific `README.md`/`AGENTS.md` summaries. Not applied to adjacent status or
   migration docs unless in scope. Optional docs only when justified. Audit mode plans findings.
-- **ASK**: One approval request covering scope, docs, changes, optional docs, and safe template
-  defaults that would become policy. Ask only blocking questions: README profile, missing facts,
-  and conflicting policy. `lgtm`/`go`/`approve` authorizes execution; no
-  second per-section gate. Audit mode skips approval.
+- **ASK**: Send one approval request in the format defined below; it covers scope, docs,
+  changes, optional docs, and safe template defaults that would become policy. Ask only
+  blocking questions: README profile, missing facts, and conflicting policy.
+  `lgtm`/`go`/`approve` authorizes execution; no second per-section gate. Audit mode skips
+  approval.
 - **EXECUTE**: Apply the approved plan in order: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `STYLE.md`, then justified optional docs. No unplanned edits.
 - **VERIFY**: Work through a checklist, not one pass:
   - Update README/AGENTS documentation maps on any add, remove, or rename.
@@ -52,6 +53,27 @@ Use this sequence for every request: `CLASSIFY → GATHER → PLAN → ASK → E
   - Confirm optional docs are justified; scan edited skill-managed docs for duplicated
     operational facts, exempting `README.md`/`AGENTS.md` audience-specific summaries.
   - Report created, updated, unchanged, and blocked/user-needed items.
+
+## Approval request format
+
+The ASK step sends one message with four numbered parts:
+
+1. **Scope** — mode, in-scope documents, and what will not be touched.
+2. **Planned changes** — per document: create, update, or leave, with a one-line summary.
+3. **Defaults to approve** — safe template defaults that would become policy (Principles,
+   Boundaries, branch and commit conventions); the user keeps or drops each.
+4. **Blocking questions** — README profile, missing facts, conflicting policy; numbered,
+   each with a proposed answer.
+
+`lgtm`/`go`/`approve` authorizes the whole plan; audit mode reports findings instead.
+
+## Findings format
+
+Audit and STYLE.md review findings: one per line, grouped by document, ordered by severity.
+
+- `<location>` — <what is wrong> → <suggested fix> (`stale` | `duplicate` | `gap` | `structure`)
+
+End with the items that need user-provided facts. A clean audit says so explicitly.
 
 ## Baseline documents
 
@@ -152,8 +174,10 @@ The opinionated structure:
 Operational facts have one canonical owner among skill-managed docs. `README.md` and `AGENTS.md`
 may repeat audience-specific summaries (`AGENTS.md` is the README for AI agents);
 `CONTRIBUTING.md`, `STYLE.md`, and other skill-managed docs must link to the owner instead of
-copying operational facts. Adjacent Markdown (status, migration docs) is reference-only: read
-for fact checks but never edited, restructured, assigned ownership, or deduplicated unless in scope.
+copying operational facts. Adjacent Markdown (status, migration docs, sub-directory READMEs)
+is reference-only: read for fact checks but never edited, restructured, assigned ownership,
+or deduplicated unless in scope — audit may flag stale or boilerplate sub-READMEs (e.g.
+framework-generated) as findings.
 
 Default ownership:
 
