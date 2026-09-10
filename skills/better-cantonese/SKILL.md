@@ -1,5 +1,5 @@
 ---
-name: better-cantonese-writings
+name: better-cantonese
 description: "用於香港中文／香港繁體中文書面語潤稿、翻譯後修訂、辨識及修訂歐化中文、翻譯腔、源語語序與不自然句法，以及病句及句法改善；香港讀者與香港語境為預設。"
 ---
 
