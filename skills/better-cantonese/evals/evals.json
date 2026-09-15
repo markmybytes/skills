@@ -80,6 +80,43 @@
         "修正「拉著小提琴和鋼琴」的不自然動賓搭配，分別使用適合小提琴和鋼琴的動詞或同等自然的重組，保留樂手在舞台上演奏兩種樂器的原意。",
         "四句均以香港中文書面語完成句法潤色，不加入解釋、地域／語體提示或其他正文以外內容。"
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "請把以下政府新聞公報段落潤稿成自然、清楚的香港繁體中文書面語，給一般香港市民閱讀。可保留公文語體的莊重，但刪去冗餘官腔；不得改動日期、項目名稱、機構名稱、數字與事實承諾。只回傳修訂稿，不要解釋。\n\n政府會繼續全力推進新田科技城和相關項目。政府會如期在今年年底就新田科技城首階段土地平整及基礎設施工程向立法會財務委員會申請撥款，以期首批創科用地於二○二六年完成平整。創科土地陸續如期到位，將讓本地科企初創有更多發展空間，也讓我們更有能力吸引境外企業落戶香港。",
+      "expected_output": "A revised government-press-release paragraph in Hong Kong Traditional Chinese that trims redundant officialese while keeping the formal register, all dates, project names, institutions and commitments intact; revised text only.",
+      "files": [],
+      "expectations": [
+        "保留全部事實：今年年底向立法會財務委員會申請撥款、首批創科用地於二○二六年完成平整、新田科技城項目名稱與相關承諾不變。",
+        "把「全力推進」「推進」等官腔填充動詞重寫為自然動詞（如按語境改「發展」「推動興建」類實義表達），修訂稿不得原樣保留「全力推進」；公文莊重語體不得丟失，也不得改成粵語口語或過度輕鬆的語氣。",
+        "長句適當斷句，「申請撥款 → 以期 → 完成平整」的邏輯鏈清楚，且無添加原文沒有的事實。",
+        "因用戶明確要求只回傳修訂稿及不要解釋，不加入地域／語體提示或其他說明。"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "以下摘自學生作文的四個句子都有語病。請逐句潤稿成自然、正確的香港中文書面語，不得添加原文沒有的事實。只回傳修訂稿，不要解釋。\n\n幸好老師延遲課業的遞交限期，我們才能更充裕地完成家課。\n他性格隨便友善，開學初便交了不少新朋友。\n這個農村糧食的生產，長期不能自給。\n他每天都做完了功課。",
+      "expected_output": "Four sentences corrected in Hong Kong Traditional Chinese written style: collocation fixes (隨和, 充裕的時間), attributive reorder, and aspect conflict removed; no added facts, revised text only.",
+      "files": [],
+      "expectations": [
+        "「隨便友善」改為「隨和友善」或同等準確配搭，不得保留「隨便」的貶義錯位。",
+        "「更充裕地完成家課」重組為「有更充裕的時間完成家課」類自然表達（「充裕」修時間而非修動作）。",
+        "「這個農村糧食的生產，長期不能自給」定語理順為「這個農村生產的糧食，長期不能自給」類，句意與事實不變。",
+        "「他每天都做完了功課」處理為「他每天都做功課」類，消除習慣性動作與完成態的衝突。",
+        "四句均無添加原文沒有的事實，語序與原意相容；因要求只回傳修訂稿，不加入提示或解釋。"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "請把以下句子潤稿成自然、清楚的香港中文書面語。留意存在句、程度副詞與因果連詞上的歐化痕跡。只回傳修訂稿，不要解釋。\n\n這裏一定有她缺席的原因。\n委員會對方案嚴重同意，對反對意見則極度不滿。\n由於他家境貧窮，他只好休學。",
+      "expected_output": "Three sentences rewritten in natural Hong Kong Traditional Chinese: existential there-be structure fronted, extreme-adverb collocations normalized while preserving stance, redundant causal conjunction removed; revised text only.",
+      "files": [],
+      "expectations": [
+        "「這裏一定有她缺席的原因」重心移前（如「她缺席一定有原因」），不照抄 there be 存在句結構。",
+        "「嚴重同意」「極度不滿」的極端副詞硬套處理為自然程度表達（如「完全同意」「深表不滿」），對方案正面、對反對意見負面的立場相對關係不變。",
+        "「由於他家境貧窮，他只好休學」可省「由於」（如「他家境貧窮，只好休學」），因果關係仍清楚。",
+        "三句均無添加新事實；因要求只回傳修訂稿，不加入提示或解釋。"
+      ]
     }
   ]
 }
