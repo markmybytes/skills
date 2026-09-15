@@ -87,9 +87,9 @@
       "expected_output": "A revised government-press-release paragraph in Hong Kong Traditional Chinese that trims redundant officialese while keeping the formal register, all dates, project names, institutions and commitments intact; revised text only.",
       "files": [],
       "expectations": [
-        "保留全部事實：今年年底向立法會財務委員會申請撥款、首批創科用地於二○二六年完成平整、新田科技城項目名稱與相關承諾不變。",
+        "保留事實承諾：今年年底向立法會財務委員會申請撥款、首批創科用地於二○二六年完成平整、新田科技城項目名稱不變。官腔詞彙替換（如「到位」改寫為「完成平整」）屬措辭修訂，不算事實改動。",
         "把「全力推進」「推進」等官腔填充動詞重寫為自然動詞（如按語境改「發展」「推動興建」類實義表達），修訂稿不得原樣保留「全力推進」；公文莊重語體不得丟失，也不得改成粵語口語或過度輕鬆的語氣。",
-        "長句適當斷句，「申請撥款 → 以期 → 完成平整」的邏輯鏈清楚，且無添加原文沒有的事實。",
+        "長句適當斷句，「申請撥款 → 以期 → 完成平整」的邏輯鏈清楚；官腔詞彙替換（到位→完成平整類）不算改動邏輯或事實，且無添加原文沒有的事實。",
         "因用戶明確要求只回傳修訂稿及不要解釋，不加入地域／語體提示或其他說明。"
       ]
     },
