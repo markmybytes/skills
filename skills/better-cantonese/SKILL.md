@@ -1,6 +1,6 @@
 ---
 name: better-cantonese
-description: "Polish, proofread and fix written Chinese, with Hong Kong Traditional Chinese as the default: revise translationese (歐化中文／翻譯腔), defective sentences (病句), awkward syntax, bureaucratic filler, vague internet slang, and post-translation wording. Use this skill whenever the user wants any Chinese text improved — whether they say 'polish this', 'proofread', 'this reads awkward', 'fix the Chinese', or 潤稿、修飾、執錯、執靚、改通順、執語病、修飾語病、翻譯腔、執靚篇文 — even if they just paste Chinese text without saying what they want done to it. Hong Kong readers and Hong Kong context are the default; Taiwanese, mainland, Singaporean, Malaysian Chinese and Cantonese colloquial are available on request."
+description: "Polish, proofread and fix written Chinese, with Hong Kong Traditional Chinese as the default: revise translationese (歐化中文/翻譯腔), defective sentences (病句), awkward syntax, bureaucratic filler, vague internet slang, and post-translation wording. Use this skill whenever the user wants any Chinese text improved — whether they say 'polish this', 'proofread', 'this reads awkward', 'fix the Chinese', or 潤稿、修飾、執錯、執靚、改通順、執語病、修飾語病、翻譯腔、執靚篇文 — even if they just paste Chinese text without saying what they want done to it. Hong Kong readers and Hong Kong context are the default; Taiwanese, mainland, Singaporean, Malaysian Chinese and Cantonese colloquial are available on request."
 ---
 
 # 香港中文書面語潤稿指南
@@ -11,10 +11,10 @@ description: "Polish, proofread and fix written Chinese, with Hong Kong Traditio
 ## 基本立場
 
 - 授權大改：重組、換語序、拆長句、補成分、理段落，全部合法。
-  只改錯字＝未完成。
+  只改錯字=未完成。
 - 原意神聖：事實、數字、日期、承諾強度、術語、語氣、立場、格式不變。
   拿唔準：提問，不臆測。
-- 模式＝提示，唔係禁詞表。
+- 模式=提示，唔係禁詞表。
   每個模式只提醒檢查：是否遮蔽意思、拖慢節奏、造成歧義。
   良性用法（「被老闆辭退」「落實法律規定」）照保留。
   永遠標準：意思不變、資訊清楚、香港讀者讀得順。
@@ -24,7 +24,7 @@ description: "Polish, proofread and fix written Chinese, with Hong Kong Traditio
   字形：「著」（拿著、沿著、著想），唔用「着」。
 - 輸出契約：預設只回修訂稿。
   未建立偏好 → 修訂稿後加非阻塞提示：
-  「如需台灣、內地、澳門、新加坡、馬來西亞中文，或粵語口語／港式口語，可隨時指定。」
+  「如需台灣、內地、澳門、新加坡、馬來西亞中文，或粵語口語/港式口語，可隨時指定。」
   用戶要求「只回傳修訂稿」「不要說明」或已指定偏好 → 省略。
 
 先判斷再動筆：
@@ -39,33 +39,33 @@ description: "Polish, proofread and fix written Chinese, with Hong Kong Traditio
 ## 診斷目錄 A：歐化句式（翻譯腔）
 
 中文靠動詞推進，英文靠名詞虛詞搭建。
-翻譯腔＝拆走中文引擎，裝上英文車架。
+翻譯腔=拆走中文引擎，裝上英文車架。
 
-### A1. 弱動詞＋名詞化
+### A1. 弱動詞+名詞化
 
-「進行／作出／予以／加以／實施」＋雙音節動詞，把動作降格成貨物。
+「進行/作出/予以/加以/實施」+雙音節動詞，把動作降格成貨物。
 
 - 我們正在進行彩排。→ 我們正在彩排。
 - 警方進行調查，並作出拘捕。→ 警方調查並拘捕。
-- 因應道路將會進行改善工程 → 因應道路改善工程。（「進行＋自足名詞短語」直接用名詞；「改善工程」本身是名詞。）
+- 因應道路將會進行改善工程 → 因應道路改善工程。（「進行+自足名詞短語」直接用名詞；「改善工程」本身是名詞。）
 
 **硬檢查**：刪弱動詞後，句子仍須像正常中文。「就全球化作匯報」不完整——
 
-- 他就全球化作匯報。→ 他匯報全球化議題。／他以全球化為題作匯報。
+- 他就全球化作匯報。→ 他匯報全球化議題。/他以全球化為題作匯報。
 
 同樣，「就此事作交代」應寫「交代事件經過」或「就此事作出交代」。
 動詞必須自然帶上賓語，刪字不是機械操作。
 
 ### A2. 「的」字連環
 
-三個以上「的」串長定語＝英文關係子句直譯。中文後置說明或拆句。
+三個以上「的」串長定語=英文關係子句直譯。中文後置說明或拆句。
 
 - 他是一位有著極其豐富的實踐經驗的優秀的工程師。→ 他是經驗豐富的優秀工程師。
 - 參差的斑駁的黑影投在長長的寂靜的街道上。→ 參差而斑駁的黑影，落在寂靜的長街上。
 
 ### A3. 大帽子句
 
-長修飾塞名詞前＝頭重腳輕。先主幹，後細節。
+長修飾塞名詞前=頭重腳輕。先主幹，後細節。
 
 - 我見到一個長得像你兄弟說話也有點像他的陌生男人。
   → 我見到一個陌生男人，長得像你兄弟，說話也有點像他。
@@ -73,14 +73,14 @@ description: "Polish, proofread and fix written Chinese, with Hong Kong Traditio
 ### A4. 濫用「被」
 
 中文「被」多含不如意、受損。
-中性／正面事態套「被」＝英文被動直譯；改主動、「獲／受／當選」或無主句。
+中性/正面事態套「被」=英文被動直譯；改主動、「獲/受/當選」或無主句。
 
 - 曾先生如期被選為特首。→ 曾先生如期當選特首。
 - 著名鋼琴家昨晚被邀請出席晚會。→ 著名鋼琴家昨晚獲邀出席晚會。
 - 相關請求將會被系統拒絕。→ 系統將拒絕相關請求。
 
 告示要點是系統做什麼；主動更短。
-轉主動時可順手把「相關／有關」泛稱還原為具體所指（原意內含時）：系統將拒絕舊版請求。
+轉主動時可順手把「相關/有關」泛稱還原為具體所指（原意內含時）：系統將拒絕舊版請求。
 但「被老闆辭退」「太陽被烏雲遮住」係正常中文，勿為避「被」而改。
 
 ### A5. 濫用「一個」
@@ -115,7 +115,7 @@ one of the... 直譯，削弱判斷句。
 
 ### A9. 介詞外框
 
-關於、對於、在……上／方面、作為——英文介詞短語直譯，簡單主謂句變頭重腳輕。
+關於、對於、在……上/方面、作為——英文介詞短語直譯，簡單主謂句變頭重腳輕。
 
 - 關於他的申請，委員會今天進行了審查。→ 委員會今天審查了他的申請。
 - 在環境保護的問題上，我們必須加強合作。→ 面對環境保護問題，我們必須加強合作。
@@ -136,11 +136,11 @@ one of the... 直譯，削弱判斷句。
 中文用「眾、群、諸」或集體名詞。
 
 - 聽眾們、運動員們、各位先生們女士們 → 一律刪「們」
-- 人們 → 大家／世人
+- 人們 → 大家/世人
 
 ### A12. 抽象名詞後綴
 
--ability／-ness 直譯。
+-ability/-ness 直譯。
 
 - 可讀性非常高 → 引人入勝
 - 侮辱性 → 極其無禮
@@ -150,14 +150,14 @@ one of the... 直譯，削弱判斷句。
 
 ### A13. 機械「地」
 
-逢狀語加「地」＝-ly 直譯。中文有現成疊字文言副詞。
+逢狀語加「地」=-ly 直譯。中文有現成疊字文言副詞。
 
 - 她慢慢地走在林蔭小道上。→ 她徐徐漫步於林蔭小道上。
 
 ### A14. 模糊程度詞
 
-「在一定程度上」「做出了一定的貢獻」＝逃避判斷。
-改實際程度：略微／顯著／頗有。
+「在一定程度上」「做出了一定的貢獻」=逃避判斷。
+改實際程度：略微/顯著/頗有。
 
 ### A15. 時態硬譯
 
@@ -180,7 +180,7 @@ one of the... 直譯，削弱判斷句。
 
 ### B1. 介詞吞主語
 
-句首「通過／經過／在……下」＋「使／讓」＝主語封死在狀語。
+句首「通過/經過/在……下」+「使/讓」=主語封死在狀語。
 
 - 通過這次培訓，使他的業務水準大幅提高。
   → 這次培訓使他的業務水準大幅提高。（或：通過培訓，他的業務水準大幅提高。）
@@ -210,7 +210,7 @@ one of the... 直譯，削弱判斷句。
 成功當選、一切任何、大約……左右、目前的當務之急、親自示範、預先安排、徹底根治、虛假失實。
 刪一半。
 
-- 聽到琴聲，感到十分感動 → 十分感動。（「感到／覺得」配自足情感詞冗餘；
+- 聽到琴聲，感到十分感動 → 十分感動。（「感到/覺得」配自足情感詞冗餘；
   但「感到失望、感到自豪」自然，「感到」唔係禁詞。）
 - 偵測到異常情況時 → 偵測到異常時。（填充名詞「情況」同理；
   「緊急情況、特殊情況」慣用，保留。）
@@ -222,7 +222,7 @@ one of the... 直譯，削弱判斷句。
 - 拉著小提琴和鋼琴。→ 拉奏小提琴，彈奏鋼琴。（演奏場景用具體演奏動詞；「拉著」只表示手部動作）
 - 發揮了優良的成績。→ 取得了優良的成績。
 
-### B7. 主謂／修飾語配搭不當
+### B7. 主謂/修飾語配搭不當
 
 - 性格非常美麗 → 性格非常開朗
 - 工作效率十分龐大 → 工作效率非常高
@@ -251,7 +251,7 @@ one of the... 直譯，削弱判斷句。
 
 ### B10. 一面對兩面
 
-「能否／好壞／與否」兩面詞，對面都要兩面。
+「能否/好壞/與否」兩面詞，對面都要兩面。
 
 - 質量能否提高，是學校走向一流的關鍵保證。→ 兩邊同用「能否」，或兩邊都單向。
 
@@ -265,7 +265,7 @@ one of the... 直譯，削弱判斷句。
 
 「三個學校的優秀教師」——校三所定師三人？
 數量詞、修飾語位置、「下午一點半前去」類時間語有兩解 → 按實際重寫；
-拿唔準：保留＋提問。
+拿唔準：保留+提問。
 
 ---
 
@@ -327,7 +327,7 @@ one of the... 直譯，削弱判斷句。
 ## 修訂流程
 
 1. 讀全文。
-   標記：文類語域、受眾、引用／代碼／標語邊界、不可改內容（日期、數字、術語、承諾）。
+   標記：文類語域、受眾、引用/代碼/標語邊界、不可改內容（日期、數字、術語、承諾）。
 2. 先修病句（目錄 B）：殘缺、配搭、雜糅、歧義、否定翻車。
 3. 再掃歐化官腔（目錄 A、C）：只在遮蔽意思、拖節奏、生歧義時改。
 4. 逐句回對原文：事實、數字、程度、語氣、術語無損；
@@ -350,7 +350,7 @@ one of the... 直譯，削弱判斷句。
 
 句式密集、翻譯稿或拿唔準時，查 `references/patterns.md`：
 
-- A 歐化句式（16 型全表＋例外與良性歐化）
-- B 病句（12 型全表＋雜糅細分）
+- A 歐化句式（16 型全表+例外與良性歐化）
+- B 病句（12 型全表+雜糅細分）
 - C 官腔、套話與模糊標籤
 - D 地域與語體判斷（香港詞彙、保留清單、口語要求、字形）
