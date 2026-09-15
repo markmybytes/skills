@@ -58,14 +58,13 @@
     {
       "id": 5,
       "prompt": "請把以下句子改寫成具體、自然的香港中文書面語，不要改寫成粵語口語。先理清人物的實際行為、前後因果和對工作的影響，再重寫內容；不要只把模糊詞逐字替換成另一組模糊詞。保留原意即可，不必只回傳修訂稿。完成後如沒有既定偏好，可在正文後加一句簡短的地域／語體能力提示，但提示不是必要正文內容。\n\n小明情商低，時常內耗，工作能力很拉胯。",
-      "expected_output": "A natural Hong Kong Traditional Chinese written-style revision that makes the person's interpersonal behavior, self-consuming worry, causal link, and work impact concrete without merely replacing vague labels; an optional brief non-blocking regional/register hint may follow.",
+      "expected_output": "Recognition that the three vague labels have no observable facts behind them: instead of inventing concrete events as facts, the agent asks for the real situation (one or two non-blocking questions), optionally with a conservative rewrite that leaves the facts blank; Hong Kong written style, no Cantonese colloquial.",
       "files": [],
       "expectations": [
-        "以可觀察的具體行為呈現「情商低」所指問題，例如不理解他人感受、溝通欠妥或處理分歧不當，而不是只換成另一個抽象標籤。",
-        "交代「內耗」的具體表現及其與工作受影響之間的因果脈絡，例如反覆猶豫、過度擔心或自我否定導致延誤、效率下降或難以作決定；因果須合理且不超出原意。",
-        "將「工作能力很拉胯」改為較自然、具體的香港中文書面語，說明工作表現如何受影響，不得只逐字替換成「不擅溝通／憂慮／很差」等另一組模糊詞。",
-        "保留原文對小明人際處理、心理狀態和工作表現欠佳的整體意思，不添加具體職業、事件或其他原文沒有的事實。",
-        "正文使用香港中文書面語，不使用粵語口語詞；可附簡短地域／語體提示，但提示不得取代改寫內容，也不應阻塞交付。"
+        "認出「情商低/內耗/拉胯」背後冇任何可觀察事實支撐；不會將虛構細節（如「開會打斷同事」「客戶誤會」「交貨延誤」）寫成確定事實。",
+        "以提問澄清實情（一至兩句、非阻塞）：請用戶提供實際行為、事例或影響，先至能夠具體改寫。",
+        "如有示範改寫，以條件式或明示假設形式呈現（如「如果佢……」），不會將虛構細節扮做事實。",
+        "正文使用香港中文書面語，不使用粵語口語詞；整體反應遵循語理優先（講出理解＋請對方確認），而非靜靜臆測。"
       ]
     },
     {
