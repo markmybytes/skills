@@ -1,6 +1,7 @@
-<!-- Lean contribution guide. Add project-specific policy only when user-provided or confirmed.
-Branch and commit conventions below are common-practice defaults behind the approval gate —
-confirm or replace them with project policy before they become normative. -->
+<!-- Lean contribution guide. Branch and commit conventions below are
+common-practice defaults behind the approval gate — confirm or replace with
+project policy before they become normative. Delete this comment when
+finished. -->
 
 # Contributing
 
@@ -22,6 +23,8 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 <type>(<scope>): <description>
 ```
 
+<!-- The commit format above is syntax illustration — keep <...> as-is. -->
+
 Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, and
 `perf`. Use `!` or a `BREAKING CHANGE:` footer for breaking changes.
 
@@ -31,7 +34,7 @@ Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, and
 - Explain what changed, why, and any important design decisions.
 - Add or update tests for behavior changes and bug fixes.
 - Update documentation when behavior, commands, or public interfaces change.
-- Run project format, lint, type-check, test, and build checks from `README.md`.
+- Run the project's verification commands from [README.md](README.md), and style checks from [STYLE.md](STYLE.md) when present.
 - Address review feedback before merge.
 
 ## Issues
@@ -40,4 +43,4 @@ Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, and
 - Use the project's security process for vulnerabilities; do not disclose them
   in public issues.
 
-<Link to CODE_OF_CONDUCT.md, SECURITY.md, SUPPORT.md, or issue templates when present.>
+{{Link to CODE_OF_CONDUCT.md, SECURITY.md, SUPPORT.md, or issue templates when present.}}

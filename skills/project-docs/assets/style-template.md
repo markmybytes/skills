@@ -1,19 +1,21 @@
-<!-- REFERENCE SKELETON ONLY — for blank projects or as inspiration. Not the
-default shape: STYLE.md is contract-defined (see SKILL.md). When scaffolding,
-leave the <...> placeholders for the maintainer; delete a section only when
-the project has no such layer or concern. -->
+<!--
+REFERENCE SKELETON ONLY — for blank projects or as inspiration. Not the
+default shape: STYLE.md is contract-defined. When scaffolding, leave the
+{{...}} fill-ins for the maintainer; offer the Principles and Rule Priority
+safe-defaults behind the approval gate; delete a section only when the project
+has no such layer or concern. Delete this comment when finished.
+-->
 
 # STYLE.md - Coding Style Guide
 
-<Scope, audience, and authority of this guide — this line is the ownership
-declaration the contract requires: what is canonical here, what links to
-another owner.>
+{{Scope, audience, and authority of this guide — the ownership declaration:
+what is canonical here, what links to another owner.}}
 
 ## Principles
 
-<!-- Starting defaults — not project policy until confirmed. Confirm with the
-project/user before keeping any; delete unconfirmed bullets. Replace or extend
-them with project-specific principles. -->
+<!-- Safe defaults, not project policy until confirmed; the user keeps or
+drops each in the approval request. Replace or extend with project-specific
+principles. -->
 
 - Security and correctness first.
 - Readable names and simple code over cleverness.
@@ -27,14 +29,10 @@ them with project-specific principles. -->
 - Update docs when behavior or public interfaces change.
 - Dependencies must earn their maintenance cost; review before adding.
 
-<!-- Context-dependent: naming, placement, API contracts, error mechanisms,
-performance, E2E coverage, commit/semver, dependency, and deployment rules
-require project choice. Add them as confirmed sections below, not here. -->
-
 ## Rule Priority
 
-<!-- Safe default from common practice; confirm with the project/user before
-keeping. Reorder or replace with project-specific priorities. -->
+<!-- Safe default from common practice; confirm before keeping. Reorder or
+replace with project-specific priorities. -->
 
 1. Security
 2. Correctness
@@ -44,22 +42,33 @@ keeping. Reorder or replace with project-specific priorities. -->
 
 ## Naming Conventions
 
-- <Language, framework, database, route, file, or component naming rule>
+- {{Language, framework, database, route, file, or component naming rule}}
 
 ## Architecture and Placement
 
-- <Where a concern belongs>
-- <Ownership boundary>
-- <When to split or combine files>
+- {{Where a concern belongs}}
+- {{Ownership boundary}}
+- {{When to split or combine files}}
+
+## Commands and Tooling
+
+<!-- STYLE.md owns style-related commands. Point at the tool config rather
+than restating lint-enforceable rules. -->
+
+- {{Lint command and scope}}
+- {{Format command and scope}}
+- {{Check command and scope}}
+
+## Generated Files
+
+- {{Generated artifact and its source}}
+- {{Regeneration command}}
+- {{Hand-edit policy}}
 
 ## Domain-Specific Rules
 
-### <Language or framework>
+### {{Language or framework}}
 
-- <Rule requested or confirmed by the user>
-
-### <Language or framework>
-
-- <Rule requested or confirmed by the user>
+- {{Rule requested or confirmed by the user}}
 
 <!-- Add Testing Conventions or Examples and Exceptions only when needed. -->
