@@ -1,156 +1,145 @@
 ---
 name: project-docs
-description: Create, audit, refine, or consolidate project Markdown documentation. Use when asked to scaffold README.md, AGENTS.md, CONTRIBUTING.md, STYLE.md, deployment docs, or a project documentation map. By default maintains README.md, AGENTS.md, and CONTRIBUTING.md; explicit user scope overrides that default.
+description: >
+  Create project documentation from scratch, or audit existing docs and update them in one approved pass. Use when asked to create, scaffold, audit, review, refine, or consolidate project Markdown. In scope: README.md, AGENTS.md, CONTRIBUTING.md, optional SECURITY.md, STYLE.md, DEPLOYMENT.md, ARCHITECTURE.md, CODE_OF_CONDUCT.md, SUPPORT.md. Also use when docs are stale, missing, duplicated, inconsistent with the code, or lack an owning document. Or when asked for a documentation map or ownership cleanup. Manages the root doc set and the docs/ interface only. Specialized docs/ content (ADRs, runbooks, guides) belongs to dedicated skills. Default scope: README.md, AGENTS.md, CONTRIBUTING.md. Explicit user scope overrides.
 ---
 
 # Project documentation
 
-Build, audit, refine, or consolidate project Markdown from user-provided requirements and
-existing content only. This skill manages project Markdown, not arbitrary prose, and does not
-discover or establish coding policy. Read relevant repository files to derive and verify in-scope
-docs: inspect source, config, tests, CI, and deployment files only as needed to document project
-purpose, stack, setup, commands, paths, and runtime behavior. Do not infer undocumented policy,
-coding style, architecture, or workflow; do not edit non-Markdown files. Never invent facts,
-policies, commands, paths, architecture, or workflow — replace placeholders only with
-user-provided facts or existing content.
+Create project docs from scratch. Or audit existing docs and update them in one approved pass. Docs stay accurate, non-duplicated, audience-appropriate. Never invent facts. Every operational fact has exactly one owning doc.
 
-Modes: **audit** (report ownership, duplication, gaps, stale claims), **scaffold** (missing baseline and justified optional docs), **refine** (preserve accurate facts), **consolidate** (duplicated or fragmented docs).
+Never invent facts, commands, paths, policies, or structure. Fill a `{{...}}` placeholder only from user input, existing content, or repo evidence (manifests, lockfiles, config, tests, CI, deploy files). Ask when the repo does not state the policy. Never infer it.
 
-## Interaction flow
+## Scope
 
-Use this sequence for every request: `CLASSIFY → GATHER → PLAN → ASK → EXECUTE → VERIFY`
+**Tier 0 (always)**: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`. Create by default on scaffold. Audit reports a missing Tier 0 doc as a gap.
 
-- **CLASSIFY**: Identify mode and scope; a named document or action overrides default baseline scope. No actionable instruction means plan only; do not edit. Determine README profile; ask if unclear.
-- **GATHER**: Read in-scope Markdown, matching asset templates, and relevant repository evidence
-  (package manifests, lockfiles, root config, test directories, CI/deployment files) to derive
-  and verify purpose, stack, setup, commands, paths, and runtime behavior. Adjacent Markdown
-  (status, migration docs) is reference-only, not edited unless explicitly in scope. Record
-  missing facts, conflicts, and justified optional docs.
-- **PLAN**: Plan creation or updates aligned to templates, preserving accurate facts and project
-  policy, removing empty/inapplicable sections. Detect duplicated operational facts across
-  in-scope, skill-managed docs; choose one owner; replace other copies with links, except
-  audience-specific `README.md`/`AGENTS.md` summaries. Not applied to adjacent status or
-  migration docs unless in scope. Optional docs only when justified. Audit mode plans findings.
-- **ASK**: One approval request covering scope, docs, changes, optional docs, and safe template
-  defaults that would become policy. Ask only blocking questions: README profile, missing facts,
-  conflicting policy, normative `STYLE.md` rules. `lgtm`/`go`/`approve` authorizes execution; no
-  second per-section gate. Audit mode skips approval.
-- **EXECUTE**: Apply the approved plan in order: `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `STYLE.md`, then justified optional docs. No unplanned edits.
-- **VERIFY**: Update README/AGENTS documentation maps; verify links, anchors, paths, commands,
-  ownership, README profile, command executability, and that no placeholder, stale command,
-  fictional policy, or empty section remains; optional docs justified. Fact-check ports,
-  lockfiles, versions, commands, paths, and test locations against repository evidence or
-  user-confirmed facts; unresolved claims become questions or unknown, never guesses. Correct
-  false or stale claims in every in-scope document, including sections not otherwise modified.
-  Scan
-  edited skill-managed docs for duplicated operational facts, exempting `README.md`/`AGENTS.md`
-  audience-specific summaries. Report created, updated, unchanged, and blocked/user-needed items.
+**Ask/offer (created only on approval)**: `SECURITY.md`, `STYLE.md`, `DEPLOYMENT.md`, `ARCHITECTURE.md`.
 
-## Baseline documents
+**Tier 2.5 (recommend by default)**: `CODE_OF_CONDUCT.md`, `SUPPORT.md`. Public or contributor-facing repo: propose both in every plan. User drops them at the gate. Create only on approval.
 
-By default, create or maintain these root documents; explicit user scope overrides this default (one named document = edit only that document):
+Propose an ask/offer doc only when no doc owns its fact domain. First verify the doc map and skim `docs/` self-descriptions. When `docs/` already covers the facts, link it in the doc map. Ownership is per fact, not per file. A `docs/` deep dive does not own the related root facts. Propose a root doc for unowned facts, linking to `docs/` for detail. Never restate `docs/` facts in a root doc. Never move or fork `docs/` content into a root file. Exception: the user explicitly requests the move. Skill-managed docs live at repo root. Never create one under `docs/`.
 
-- `README.md` — human project entry point.
-- `AGENTS.md` — AI coding-agent instructions.
-- `CONTRIBUTING.md` — contributor workflow and standard contribution guidance.
+**Out of concern**:
 
-## Optional documents
+- `LICENSE` and `CHANGELOG.md` — never managed. Links and badges may reference `LICENSE`.
+- Translated docs — never author. Audit may report translation drift.
+- Nested `AGENTS.md` — manage the root set only. Nested files are reference-only. Root/nested contradictions are findings.
+- ADR/runbook/guide authoring inside `docs/` — dedicated skills own it.
+- Adjacent Markdown, such as status docs and sub-READMEs — reference-only.
 
-Recommend or create these only when user or project context justifies them; never create fictional roadmaps, contact channels, policies, or procedures:
+**`docs/` = interface only.** Root docs own operational knowledge and facts. `docs/` holds deep dives and narrative, not this skill's concern. Own the doc map and links to `docs/`. Never scaffold the directory. Skim each `docs/` file's title, headings, and stated scope to learn what it covers. Use that metadata for map purposes and domain detection. Never verify `docs/` content against the code. Never judge, edit, or restructure it. Never report its staleness or duplication unless the user explicitly requests it.
 
-| Document             | Create when                                                            |
-| -------------------- | ---------------------------------------------------------------------- |
-| `STYLE.md`           | Shared coding conventions are substantial or span multiple domains.    |
-| `DEPLOYMENT.md`      | Deployment, infrastructure, release, or recovery steps exist.          |
-| `SECURITY.md`        | The project is public or handles security-sensitive data or access.    |
-| `CHANGELOG.md`       | Consumers need maintained version history and releases are not enough. |
-| `CODE_OF_CONDUCT.md` | The project has a public contributor community.                        |
-| `SUPPORT.md`         | Users need a support channel separate from issues.                     |
-| `ARCHITECTURE.md`    | System design would overload `README.md` or `STYLE.md`.                |
-| `GOVERNANCE.md`      | Multiple maintainers need explicit decision rules.                     |
-| `docs/`              | Several detailed documents are needed.                                 |
-| `LICENSE`            | Public or distributed software needs license terms.                    |
+## Modes
 
-## README profile
+- **scaffold** — create missing docs: Tier 0 by default, plus Tier 2.5 recommendations and unowned-domain ask/offer proposals.
+- **audit → update** — also plain review requests. Collect findings, read-only. Findings cover stale claims, duplicates, gaps, ownership violations, and structural drift from template headings. Findings are the fix plan. One approval executes them, then VERIFY. A plain review request stops at findings. Execute nothing without an explicit fix approval.
+- **refine** — fix stale docs. Keep accurate facts. Restructure to template headings when a doc diverged.
+- **consolidate** — dedupe and merge across the root set only. Never touch `docs/` content.
+- **fast-path** — use when the user names existing doc(s) to fix, no facts are missing, no policy conflicts, and no new defaults need approval. Execute directly. Skip PLAN and ASK. Report after VERIFY. Creating a doc always takes the gate.
 
-Choose the profile by the README's primary reader and purpose, not repository visibility. If unclear, ask.
+## Process
 
-### User-facing README
+### Flow: CLASSIFY → GATHER → PLAN → ASK → EXECUTE → VERIFY
 
-For project users. Lead with value to a new visitor: project name, short description, useful
-badges, demo or screenshot when available; what it does and who it is for; usage, installation,
-first use; configuration, deployment, and environment notes when needed; links to contribution,
-license, security, support, and detailed docs when present. Table of contents only for a long
-README; roadmap, contact, or acknowledgments only when real and maintained.
+- **CLASSIFY**: mode, scope, README profile. A named doc or action overrides default scope. No actionable instruction means plan only, no edits.
+- **GATHER**: in-scope Markdown, templates, repo evidence. Skim `docs/` self-descriptions only. Record missing facts, policy conflicts, unowned domains.
+- **PLAN**: follow templates and ownership rules. Keep accurate facts. Drop empty sections. One owner per fact, others link. Propose ask/offer docs only when unowned.
+- **ASK**: the single gate. Fast-path and plain review (findings, no fixes) skip it.
+- **EXECUTE**: run the approved plan. Default order: `README.md`, then `AGENTS.md`, then `CONTRIBUTING.md`, then `STYLE.md`, then other approved docs. The plan may reorder. No unplanned edits. Update doc maps on add, remove, or rename.
+- **VERIFY** — checklist, not one pass:
+  - Verify links, anchors, and paths resolve. Verify the doc map is complete and current.
+  - Verify commands, versions, ports, paths, and test locations against repo evidence or facts the user provided. Report unresolved items. Never guess.
+  - Fix false claims in every in-scope root doc, including sections you did not change. Never flag `docs/` content.
+  - Verify every command is executable. Ship no `{{...}}` fill-in, no fictional policy, no empty section. Exception: a scaffolded `STYLE.md` skeleton keeps its rule fill-ins for the maintainer. Report it as blocked-needs-user. Never invent rules to fill them.
+  - Report created, updated, unchanged, and blocked-needs-user items.
 
-For technology badges, select from https://badges.pages.dev/ and use generated Shields markup with
-default `style=for-the-badge` and `logoColor=white` — copy the real generated URL and markup,
-never invent badge slugs or URLs. Include only major technologies central to the project; link
-each badge to the technology's official site when known. Keep repository-status badges (tag,
-contributors, forks, stars, issues, license) separate and unchanged.
+### Approval gate (ASK)
 
-### Developer-facing README
+One message, four numbered parts:
 
-For contributors and developers. Lead with getting a developer productive: project scope and
-audience; stack and prerequisites; setup and first run; development, test, quality, and build
-commands; important environment or data limitations; links to contribution, style, deployment,
-architecture, and agent docs. No user-marketing sections.
+1. **Scope** — mode, docs in, docs untouched.
+2. **Planned changes** — per doc: create, update, or leave, plus one line.
+3. **Defaults to approve** — safe template defaults that would become policy (per doc: Principles, Boundaries, branch and commit conventions). User keeps or drops each.
+4. **Blocking questions** — README profile, missing facts, policy conflicts. Number them. Propose an answer for each.
 
-## Build AGENTS.md
+`lgtm`, `go`, or `approve` authorizes the whole plan. Approving audit findings uses this same gate.
 
-Create or maintain `AGENTS.md` unless narrower scope is given; it owns agent-relevant knowledge:
-repository map, commands, testing behavior, boundaries, generated files, verification
-requirements. Include a documentation map near the top; link to `STYLE.md` and `CONTRIBUTING.md`
-instead of duplicating them; use executable commands and exact paths; state `Always`, `Ask First`, and `Never` boundaries when applicable.
+### Findings
 
-## Build CONTRIBUTING.md
+One line per finding. Group by doc. Rank by risk: broken links and wrong commands first, cosmetic gaps last.
 
-Start from `assets/contributing-template.md` and common contribution practice; replace or extend
-with user-provided policy. Never invent Jira keys, branch prefixes, merge strategy, CLA
-requirements, reviewer rules, support channels, or security contacts — ask the user or keep common practice.
+- `<location>` — <what is wrong> → <suggested fix> (`stale` | `duplicate` | `gap` | `ownership` | `structure`)
 
-## Build or assess STYLE.md
+Mark breadth: one line for each surface surveyed but not deeply inspected. End with items that need user facts. State explicitly when an audit is clean. Keep the report readable in under a minute.
 
-If missing, scaffold from `assets/style-template.md`, ask for project rules, and get approval
-before finalizing normative content. If present, refine or consolidate only what the user
-requested; treat template common principles as approved defaults after "lgtm"; for "implement"
-without details, use existing policy and ask only before adding new normative rules.
-`Architecture and Placement` owns placement and ownership rules, does not duplicate the
-navigation-only repository map in `AGENTS.md`; split large domain-specific rules into linked docs.
+## Rules
 
-## Ownership and documentation maps
+### Ownership — one owner per fact
 
-Operational facts have one canonical owner among skill-managed docs. `README.md` and `AGENTS.md`
-may repeat audience-specific summaries (`AGENTS.md` is the README for AI agents);
-`CONTRIBUTING.md`, `STYLE.md`, and other skill-managed docs must link to the owner instead of
-copying operational facts. Adjacent Markdown (status, migration docs) is reference-only: read
-for fact checks but never edited, restructured, assigned ownership, or deduplicated unless in scope.
+| Document          | Owns                                                                    |
+| ----------------- | ----------------------------------------------------------------------- |
+| `README.md`       | Human overview, onboarding, project use, tech stack.                               |
+| `AGENTS.md`       | Agent workflow, overview, repo map, dev/build/test workflow commands, testing, boundaries, canonical doc map. |
+| `CONTRIBUTING.md` | Branches, commits, issues, PRs, review workflow.                        |
+| `STYLE.md`        | Coding practices SSoT for humans and agents: conventions, code placement, style-related commands (lint/format), generated-file rules. |
+| `SECURITY.md`     | Vulnerability reporting, security policy.                               |
+| `CODE_OF_CONDUCT.md` | Community conduct rules.                                             |
+| `SUPPORT.md`      | Support channels.                                                        |
+| `DEPLOYMENT.md`   | Infrastructure, releases, deployment, recovery.                         |
+| `ARCHITECTURE.md` | System design.                                                           |
 
-Default ownership:
+Rules: `README.md` and `AGENTS.md` may repeat audience-specific summaries. `AGENTS.md` is the agent's README. Links follow audience. `CONTRIBUTING.md` points human contributors to `README.md`. Agents reach the same commands from the `AGENTS.md` doc map. `STYLE.md` owns coding facts even when `AGENTS.md` summarizes them. `AGENTS.md` links or summarizes. It never supersedes. Never strip `STYLE.md` in favor of `AGENTS.md`. Doc maps may repeat names and audiences. Never operational facts. Every fact keeps exactly one owner. Other docs link to it. Never copy.
 
-| Document          | Owns                                                             |
-| ----------------- | ---------------------------------------------------------------- |
-| `README.md`       | Human overview, onboarding, and project use.                     |
-| `AGENTS.md`       | Agent workflow, repository map, commands, tests, and boundaries. |
-| `CONTRIBUTING.md` | Branches, commits, issues, pull requests, and review workflow.   |
-| `STYLE.md`        | Coding conventions, architecture rules, and technical contracts. |
-| `DEPLOYMENT.md`   | Infrastructure, releases, deployment, and recovery.              |
-| `SECURITY.md`     | Vulnerability reporting and security policy.                     |
-| `CHANGELOG.md`    | Version history.                                                 |
+### Placeholders
 
-Add a documentation map to both `README.md` and `AGENTS.md`: maps may repeat names and audience
-for their readers but must not duplicate operational facts. `README.md` uses concise linked
-bullets; `AGENTS.md` uses a table. Include only files that exist; update both maps on add,
-remove, or rename. Examples live in the templates.
+`{{...}}` marks fill-ins. Replace them with user-provided or repo-evidenced facts. Never ship one, except a scaffolded `STYLE.md` skeleton (see VERIFY). `<...>` marks syntax examples, such as commit formats. Keep them as-is. Never write `<TODO>` markers.
 
-## Writing rules
+### Writing
 
-- Prefer concise, readable Markdown: direct language, concrete commands, purpose before detail,
-  representative labeled examples, local terminology.
-- Use tables for compact comparisons and the AGENTS.md map; bullet links for the README doc list; lists for procedures.
-- Cut sections that do not help the intended reader; do not turn code patterns into policy.
+Write concise readable Markdown. Use direct language, concrete commands, purpose before detail, local terminology. Use tables for compact comparisons and the AGENTS doc map. Use lists for procedures. Cut sections that do not help the reader. Code patterns are not policy.
+
+## Doc guides
+
+### README profiles
+
+Choose at CLASSIFY by primary reader and purpose, not repo visibility. Ask when unclear.
+
+**User-facing** — open with value: name, short description, real badges, screenshot or demo when real. State what the project does and who it is for. Usage, install, first use, common commands. Config and deploy notes when needed. Link contribution, license, security, conduct, support, and docs when present. TOC only if long.
+
+**Developer-facing** — intro states scope and audience. `## Tech Stack` lists structural choices only: language, runtime, framework, styling system, database. Libraries are dependencies. Dev tools are tooling. Tech Stack never lists either. `## Prerequisites`. `## Development` covers init and bootstrap. `## Commands` summarizes `AGENTS.md` workflow commands. `## Important Notes` summarizes `AGENTS.md` boundaries and environment notes. `## Documentation` ends the file. No user-marketing.
+
+Badges: copy tech badges as generated markup from https://badges.pages.dev/ (Simple Badges) with `style=for-the-badge&logoColor=white`. Include only major technologies. Link each badge to its official site when known. Never invent badge slugs or URLs. Repo-status badges are hand-assembled shields.io URLs. The difference is deliberate. Never normalize one to the other.
+
+### AGENTS.md
+
+The agents.md spec allows freeform Markdown. This skill does not: `assets/agents-template.md` defines the shape. Include: one-line description, doc map, overview, tech stack summary (README owns tech stack), repo map, workflow commands, testing behavior, boundaries, concrete verification commands.
+
+Doc map: one row per root doc, plus every `docs/` file the root set references. Take each purpose from the doc's self-description. Remove rows for files that do not exist.
+
+Style-related commands belong to `STYLE.md`. Link them there. Keep the file at 200 lines or fewer. Nested `AGENTS.md` files are reference-only.
+
+### Aliases
+
+Never create an alias file unprompted. Offer one when repo evidence shows the tool.
+
+Per-tool facts: Claude Code reads `AGENTS.md` natively when no `CLAUDE.md` exists. Use an `@AGENTS.md` redirect only for coexistence. `.cursor/rules/*.mdc` is current. `.cursorrules` is legacy. `.github/copilot-instructions.md` is official. `GEMINI.md` needs config. Never promise imports there.
+
+An existing alias file with content: offer migration. Never overwrite. Follow each tool's real syntax, non-Markdown when required.
+
+### STYLE.md
+
+Propose `STYLE.md` only when convention evidence exists: lint configs or repeated patterns. Create it only through the approval gate. Never auto-create. Offer no authored rules beyond `assets/style-template.md` safe-defaults (Principles, Rule Priority). Every rule bullet is the maintainer's. Rewrite `STYLE.md` content only on explicit user request.
+
+Review of an existing `STYLE.md` is audit mode, against the checklist below. Never verify it against the template skeleton. The skeleton is reference only. Checklist: rule priority present. Ownership declaration present. No operational facts duplicated. No sections for absent layers. No dead sections. No empty rule bullets (fresh scaffold placeholders exempt). No restated lint-enforceable rules (reference the tool config instead).
+
+### CONTRIBUTING.md
+
+Never invent Jira keys, branch prefixes, merge strategy, CLA rules, reviewer rules, support channels, or security contacts. Ask or use common practice. The template carries the structure.
 
 ## Templates
+
+Templates define expected structure. Keep headings and order, except `assets/style-template.md` (reference skeleton — verify `STYLE.md` against its review checklist). Replace `{{...}}`. Remove inapplicable sections.
 
 - `assets/readme-user-template.md`
 - `assets/readme-developer-template.md`
@@ -158,4 +147,4 @@ remove, or rename. Examples live in the templates.
 - `assets/contributing-template.md`
 - `assets/style-template.md`
 
-Templates are default structural guides, not rigid output. Replace placeholders with user-provided or existing facts; delete inapplicable sections; never leave `<TODO>` markers. Optional template defaults (for example, `Common Agent Rules` or `Common Principles`) stay optional until project/user approval, then become policy.
+For ask/offer docs beyond these templates, follow public conventions, such as the `SECURITY.md` disclosure pattern. Never invent structure.

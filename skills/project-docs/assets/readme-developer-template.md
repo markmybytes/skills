@@ -1,53 +1,68 @@
-<!-- Developer-facing README template. Keep it practical; omit user-marketing sections. -->
+<!-- Developer-facing README template. Keep it practical; omit user-marketing
+sections. Delete this comment when finished. -->
 
-# <Project name>
+# {{project name}}
 
-<One-sentence project description and team purpose.>
+{{One-sentence project description — what it is, who it is for, and what it owns.}}
 
-## Scope
+## Tech Stack
 
-<What the project owns and who uses it.>
+<!-- Load-bearing structural choices only: language, runtime, framework,
+styling system, database. Incidental libraries are dependencies and dev tools
+are tooling — list them under Prerequisites/Commands, never here. -->
 
-## Stack
-
-| Layer   | Technology               |
-| ------- | ------------------------ |
-| <Layer> | <Technology and version> |
+| Layer        | Technology               |
+| ------------ | ------------------------ |
+| {{layer}}    | {{technology and version}} |
 
 ## Prerequisites
 
-- <Required runtime and version>
-- <Required services or credentials>
-
-## Quick Start
-
-```<shell>
-<Executable setup commands>
-```
+- {{Required runtime and version}}
+- {{Required services or credentials}}
 
 ## Development
 
-| Command     | Purpose   |
-| ----------- | --------- |
-| `<command>` | <Purpose> |
+```sh
+# 1. Init: clone, configure, install dependencies
+{{commands}}
 
-## Testing and Quality
-
-```<shell>
-<Format, lint, type-check, test, and build commands>
+# 2. Bootstrap / first run
+{{commands}}
 ```
 
-<Test database, fixture, environment, or CI notes that developers need.>
+## Commands
 
-## Documentation
+<!-- One section for day-to-day commands; add ### subsections only as needed
+(e.g. Dev Server, Quality & Testing, Data Setup). Audience summary of
+AGENTS.md workflow commands — link there for agent-facing detail. -->
 
-<!-- Keep only documents that exist; each linked document owns its details. -->
+| Command     | Purpose   |
+| ----------- | --------- |
+| `{{command}}` | {{purpose}} |
 
-- [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
-- [CONTRIBUTING.md](CONTRIBUTING.md) — Development workflow, testing, pull requests
-- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
-- [STYLE.md](STYLE.md) — Coding conventions
+### Quality & Testing
+
+<!-- Auto-fix tools first, then check tools for remaining issues.
+Style-related commands belong to STYLE.md; link if listed. -->
+
+| Scope    | Auto-fix | Check |
+| -------- | -------- | ----- |
+| {{scope}} | `{{cmd}}` | `{{cmd}}` |
+
+{{Test database, fixture, environment, or CI notes that developers need.}}
 
 ## Important Notes
 
-- <Environment, generated-file, data, or local-development limitation>
+- {{Environment, generated-file, data, or local-development limitation}}
+
+## Documentation
+
+<!-- Keep only documents that exist; add a row for every docs/ file the root
+set references, purpose from its self-description. -->
+
+- [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Branches, commits, and PRs
+- [SECURITY.md](SECURITY.md) — Vulnerability reporting, security policy
+- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
+- [STYLE.md](STYLE.md) — Coding conventions
+- [{{doc}}]({{doc}}) — {{purpose}}
