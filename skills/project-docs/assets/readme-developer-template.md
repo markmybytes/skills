@@ -1,24 +1,39 @@
-<!-- Developer-facing README template. Keep it practical; omit user-marketing
-sections. Delete this comment when finished. -->
+<!--
+Developer-facing README layout. Gates live per section — remove gated-out
+sections entirely. Headings follow the repo language; keep heading ORDER.
+Replace {{...}} with user-provided or repo-evidenced facts. Delete this
+comment when finished.
+-->
 
 # {{project name}}
 
 {{One-sentence project description — what it is, who it is for, and what it owns.}}
 
-## Tech Stack
+<!-- TECH STACK: gate — only structural choices that constrain where and how
+code gets written. Versions and full tool lists live in package.json. Each
+row = a placement decision. -->
 
-<!-- Load-bearing structural choices only: language, runtime, framework,
-styling system, database. Incidental libraries are dependencies and dev tools
-are tooling — list them under Prerequisites/Commands, never here. -->
+## Tech Stack
 
 | Layer        | Technology               |
 | ------------ | ------------------------ |
-| {{layer}}    | {{technology and version}} |
+| {{layer}}    | {{technology}}           |
+
+<!-- PREREQUISITES: gate — only prerequisites a config file cannot answer.
+Shape: one line per item — name, one qualifier or link. Never explain how a
+version resolves (manifest shows it) and never ship manifest facts (package
+manager, lockfile presence). When the manifest names a version manager
+(volta, uv, sdkman), it covers the language runtime: list the manager, drop
+the bare language bullet. Good items: version manager, VPN, databases,
+credentials, language extensions a manager does not cover. -->
 
 ## Prerequisites
 
-- {{Required runtime and version}}
-- {{Required services or credentials}}
+- {{Tool}} — {{one qualifier or link}}
+- {{Tool}} — {{one qualifier or link}}
+
+<!-- DEVELOPMENT: gate — numbered init/bootstrap steps. Setup detail belongs
+in CONTRIBUTING.md; link there when the flow is long. -->
 
 ## Development
 
@@ -30,39 +45,25 @@ are tooling — list them under Prerequisites/Commands, never here. -->
 {{commands}}
 ```
 
+<!-- COMMANDS: gate — 2-col table, day-to-day commands. Purpose column =
+non-obvious behavior only. Never transcribe what package.json answers.
+Agent-facing depth lives in AGENTS.md. -->
+
 ## Commands
 
-<!-- One section for day-to-day commands; add ### subsections only as needed
-(e.g. Dev Server, Quality & Testing, Data Setup). Audience summary of
-AGENTS.md workflow commands — link there for agent-facing detail. -->
-
-| Command     | Purpose   |
-| ----------- | --------- |
+| Command       | Purpose     |
+| ------------- | ----------- |
 | `{{command}}` | {{purpose}} |
 
-### Quality & Testing
-
-<!-- Auto-fix tools first, then check tools for remaining issues.
-Style-related commands belong to STYLE.md; link if listed. -->
-
-| Scope    | Auto-fix | Check |
-| -------- | -------- | ----- |
-| {{scope}} | `{{cmd}}` | `{{cmd}}` |
-
-{{Test database, fixture, environment, or CI notes that developers need.}}
-
-## Important Notes
-
-- {{Environment, generated-file, data, or local-development limitation}}
+<!-- DOCUMENTATION: one row per root doc that exists, purpose from its
+self-description. AGENTS.md never appears here — human docs do not
+reverse-reference it. Delete the section when the list would hold fewer
+than three rows. -->
 
 ## Documentation
-
-<!-- Keep only documents that exist; add a row for every docs/ file the root
-set references, purpose from its self-description. -->
 
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
 - [CONTRIBUTING.md](CONTRIBUTING.md) — Branches, commits, and PRs
 - [SECURITY.md](SECURITY.md) — Vulnerability reporting, security policy
-- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
-- [STYLE.md](STYLE.md) — Coding conventions
+- [ARCHITECTURE.md](ARCHITECTURE.md) — System design and code placement
 - [{{doc}}]({{doc}}) — {{purpose}}

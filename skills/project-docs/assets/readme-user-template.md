@@ -1,19 +1,18 @@
 <!--
-User-facing README template.
-
-Keep only sections useful for this project. Delete this comment when finished.
-Replace every {{...}} fill-in with a user-provided or confirmed fact — never
-invent badges, URLs, screenshots, or policies; delete unused examples instead.
-<...> inside examples is syntax illustration and stays as-is.
+User-facing README layout. Gates live per section — remove gated-out
+sections entirely. Headings follow the repo language; keep heading ORDER.
+Replace every {{...}} with a user-provided or confirmed fact; never invent
+badges, URLs, screenshots, or policies; delete unused examples instead.
+Delete this comment when finished.
 -->
 
 <a id="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
-<div align="center">
+<!-- Repo-status badges: keep only badges supported by real repository
+metadata. Confirm the default branch (main/master) and the real license path
+before shipping the link definitions at the bottom. -->
 
-<!-- Repo-status badges: hand-assembled shields.io URLs, kept as-is with real
-owner/repo values. Keep only badges supported by real repository metadata. -->
+<div align="center">
 
 [![Tag][tag-shield]][tag-url]
 [![Contributors][contributors-shield]][contributors-url]
@@ -24,10 +23,9 @@ owner/repo values. Keep only badges supported by real repository metadata. -->
 
 </div>
 
-<!-- PROJECT LOGO -->
+<!-- LOGO: delete the whole block when no real project logo exists. -->
 <br />
 <div align="center">
-  <!-- Delete logo block if no real project logo exists. -->
   <a href="https://github.com/{{owner}}/{{repo}}">
     <img src="{{logo URL or repository path}}" alt="{{project name}} logo" width="80" height="80">
   </a>
@@ -35,7 +33,7 @@ owner/repo values. Keep only badges supported by real repository metadata. -->
   <h3 align="center">{{project name}}</h3>
 
   <p align="center">
-    {{short tagline describing what the project does}}
+    {{one-line positioning: what it is, who it is for}}
     <br />
     <!-- Keep only links backed by real issue templates or pages. -->
     <a href="{{bug-report URL}}">Report Bug</a>
@@ -44,31 +42,29 @@ owner/repo values. Keep only badges supported by real repository metadata. -->
   </p>
 </div>
 
-<!-- ABOUT THE PROJECT -->
+<!-- ABOUT: a real screenshot or demo image only when one exists. -->
 
 ## About the Project
 
-{{What the project does, who it is for, and its main use case. Add a
-screenshot or demo image only when a real one exists.}}
+{{Project positioning in one short paragraph from user input or repo description. Never restate details other docs own.}}
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- BUILT WITH -->
+<!-- BUILT WITH: gate — only if project-identity technologies exist.
+Copy real generated markup from https://badges.pages.dev/ (Simple Badges)
+with style=for-the-badge and logoColor=white. Only major technologies;
+link each badge to its official site when known. Never invent badge slugs
+or URLs. The badge below is an example — replace or delete. -->
 
 ### Built With
-
-<!-- Technology badges: copy real generated markup from https://badges.pages.dev/
-(Simple Badges) with style=for-the-badge and logoColor=white by default.
-Include only major technologies central to the project; link each badge to
-the technology's official site when known. Never invent badge slugs or URLs;
-omit the badge when no real one exists. The badge below is an example —
-replace or delete. -->
 
 [<img src="https://img.shields.io/badge/font%20awesome-538cd7?style=for-the-badge&logo=fontawesome&logoColor=white">](https://fontawesome.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- USAGE -->
+<!-- USAGE: gate — only when a representative workflow exists.
+Shortest useful flow; one example. Collapse long secondary examples with
+<details>. -->
 
 ## Usage
 
@@ -80,18 +76,21 @@ replace or delete. -->
 {{Representative usage example}}
 ```
 
-<!-- For long or secondary examples, collapse with <details>: keep the main
-flow visible, hide only supplementary material. -->
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
+<!-- PREREQUISITES: gate — only prerequisites a config file cannot answer.
+Shape per SKILL.md README profiles: one line per item — name plus one
+qualifier or link. Never explain how a version resolves; never ship manifest
+facts. A version manager covers the runtime it manages: list it, drop the
+bare language bullet. Examples: VPN, version manager, accounts, services. -->
 
 ## Getting Started
 
 ### Prerequisites
 
-- {{Required runtime, tool, service, or account}}
+- {{Required tool, service, or access not derivable from config}}
+
+<!-- INSTALL: executable commands only. -->
 
 ### Installation / Setup
 
@@ -99,35 +98,37 @@ flow visible, hide only supplementary material. -->
 {{Executable installation commands}}
 ```
 
-### Commands
-
-<!-- Audience summary of AGENTS.md workflow commands — link there for
-agent-facing detail. User-relevant commands only (run, serve, build for use).
+<!-- COMMANDS: gate — only when day-to-day commands exist.
+User-relevant commands only (run, serve, build for use). When this README is
+the repo's sole human-facing commands doc, include contributor basics
+(development, test, lint) — evidence-backed. Purpose column = non-obvious
+behavior only, e.g. "installs Playwright browsers on first run". Never
+transcribe versions, flags, or formulas a script/config answers.
 Agent-facing depth lives in AGENTS.md. -->
+
+### Commands
 
 | Command       | Purpose     |
 | ------------- | ----------- |
 | `{{command}}` | {{purpose}} |
 
-### Documentation
+<!-- DOCUMENTATION: one row per root doc that exists, purpose from its
+self-description. AGENTS.md never appears here — human docs do not
+reverse-reference it. Delete the section when the list would hold fewer
+than three rows. -->
 
-<!-- Keep only documents that exist; add a row for every docs/ file the root
-set references, purpose from its self-description. Include this map when the
-project has several documents; delete it for one or two docs. -->
+### Documentation
 
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Infrastructure, release process, and deployment details
 - [CONTRIBUTING.md](CONTRIBUTING.md) — Branches, commits, and PRs
 - [SECURITY.md](SECURITY.md) — Vulnerability reporting, security policy
-- [AGENTS.md](AGENTS.md) — Repository instructions for coding agents
-- [STYLE.md](STYLE.md) — Coding conventions
+- [ARCHITECTURE.md](ARCHITECTURE.md) — System design and code placement
 - [{{doc}}]({{doc}}) — {{purpose}}
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- Reference-style links. Replace fill-ins with real repository values;
-confirm the default branch (main/master) and the real license path before
-shipping; delete unused entries. -->
+<!-- Reference-style links: replace fill-ins with real repository values;
+delete unused entries. -->
 
 [tag-url]: https://github.com/{{owner}}/{{repo}}/releases
 [tag-shield]: https://img.shields.io/github/v/tag/{{owner}}/{{repo}}?style=for-the-badge&label=LATEST&color=%23B1B1B1

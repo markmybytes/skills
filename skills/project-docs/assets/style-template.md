@@ -1,74 +1,34 @@
 <!--
-REFERENCE SKELETON ONLY — for blank projects or as inspiration. Not the
-default shape: STYLE.md is contract-defined. When scaffolding, leave the
-{{...}} fill-ins for the maintainer; offer the Principles and Rule Priority
-safe-defaults behind the approval gate; delete a section only when the project
-has no such layer or concern. Delete this comment when finished.
+STYLE.md layout. Exists only when a coherent coding-convention family
+carries evidence-backed rules that no config or existing doc carries;
+otherwise fold the rules into
+ARCHITECTURE.md (placement) / AGENTS.md (generated-file bans). Created only
+through the approval gate — never auto-created. Every rule bullet is the
+maintainer's: fill-ins stay placeholders, never invented. Headings follow
+the repo language; keep heading ORDER. Delete this comment when finished.
 -->
 
-# STYLE.md - Coding Style Guide
+# STYLE.md
 
-{{Scope, audience, and authority of this guide — the ownership declaration:
-what is canonical here, what links to another owner.}}
+{{Scope declaration: one line, own scope only — this file is the source of truth for coding conventions and style rules.}}
 
-## Principles
+<!-- CODE CONVENTIONS: per language/domain sections, one bullet per rule.
+Rule bullets state convention + why (pitfall lineage beats abstract
+principles). Never restate: lint-enforceable rules (point at the config),
+framework-official semantics, or what a config file can answer. Principles
+and priority lists never ship here. -->
 
-<!-- Safe defaults, not project policy until confirmed; the user keeps or
-drops each in the approval request. Replace or extend with project-specific
-principles. -->
+## {{Language or domain}} conventions
 
-- Security and correctness first.
-- Readable names and simple code over cleverness.
-- Follow existing project patterns before introducing new ones.
-- Explain why in comments, not what the code does.
-- YAGNI: avoid speculative features and abstractions; justify an abstraction by current reuse or clarity.
-- Keep responsibilities cohesive and coupling low.
-- Validate untrusted input at trust boundaries (network input, files, argv, environment); prefer allowlists where applicable.
-- Handle errors explicitly without leaking sensitive details.
-- Tests for meaningful behavior; tests should fail when that behavior breaks.
-- Update docs when behavior or public interfaces change.
-- Dependencies must earn their maintenance cost; review before adding.
+- {{convention}} — {{why}}
 
-## Rule Priority
+## {{Language or domain}} conventions
 
-<!-- Safe default from common practice; confirm before keeping. Reorder or
-replace with project-specific priorities. -->
+- {{convention}} — {{why}}
 
-1. Security
-2. Correctness
-3. Architecture
-4. Simplicity
-5. Local consistency
+<!-- GENERATED FILES: gate — only when the repo builds named artifacts. List = artifacts + regenerate command; hand-edit policy lives in
+AGENTS.md Never list. -->
 
-## Naming Conventions
+## Generated files
 
-- {{Language, framework, database, route, file, or component naming rule}}
-
-## Architecture and Placement
-
-- {{Where a concern belongs}}
-- {{Ownership boundary}}
-- {{When to split or combine files}}
-
-## Commands and Tooling
-
-<!-- STYLE.md owns style-related commands. Point at the tool config rather
-than restating lint-enforceable rules. -->
-
-- {{Lint command and scope}}
-- {{Format command and scope}}
-- {{Check command and scope}}
-
-## Generated Files
-
-- {{Generated artifact and its source}}
-- {{Regeneration command}}
-- {{Hand-edit policy}}
-
-## Domain-Specific Rules
-
-### {{Language or framework}}
-
-- {{Rule requested or confirmed by the user}}
-
-<!-- Add Testing Conventions or Examples and Exceptions only when needed. -->
+- `{{artifact}}` — {{source and regenerate command}}

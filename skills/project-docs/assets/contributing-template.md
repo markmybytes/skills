@@ -1,46 +1,61 @@
-<!-- Lean contribution guide. Branch and commit conventions below are
-common-practice defaults behind the approval gate — confirm or replace with
-project policy before they become normative. Delete this comment when
-finished. -->
+<!--
+CONTRIBUTING.md layout. Gates live per section — remove gated-out sections
+entirely. Headings follow the repo language; keep heading ORDER. Branch and
+commit conventions are approvals-gate defaults, not pre-shipped policy.
+Delete this comment when finished.
+-->
 
 # Contributing
 
+<!-- OPENER: pointers + gate line. Real file links only, no section anchors.
+Gate each link: only when the target file exists (Tier 0 docs exist per the
+approved plan; ask/offer docs gate). Setup commands live in README (human
+path). Workflows precede PR mechanics.
+-->
+
 See [README.md](README.md) for setup and development commands.
 
-## Before You Start
+{{Scope declaration: one line, own scope only — this file is the source of truth for the contribution workflow.}}
 
-- Check existing issues and pull requests before opening a new one.
-- Discuss substantial feature changes before implementation.
-- Branch from the repository's default branch.
+Before making any code change, read [ARCHITECTURE.md](ARCHITECTURE.md) when it exists.
 
-## Branches and Commits
+<!-- When ARCHITECTURE.md exists, drop "when it exists" from the shipped line;
+when it does not, drop the whole line. -->
 
-Use a descriptive branch name. Keep each branch focused on one concern.
+<!-- WORKFLOW: naming grammar from git-branch reality (real branch names as
+examples — each resolves to a real branch or commit, otherwise mark as
+`<example>`), not invented prefixes. Commit messages default to Conventional
+Commits (`<type>(<scope>): <subject>`); repo evidence of a different grammar
+replaces the default at the gate. Traceability anchor = the repo's tracker
+key, in branch and PR title; commit policy per repo. State
+each why once, then the rule. Rules stay mechanism-neutral: never name the
+enforcement layer (hook, branch protection, bot). Never pad back sections
+the user dropped. -->
 
-Use [Conventional Commits](https://www.conventionalcommits.org/):
+## Branches and commits
 
-```text
-<type>(<scope>): <description>
-```
+Branch from the default branch. One concern per branch.
 
-<!-- The commit format above is syntax illustration — keep <...> as-is. -->
+{{Branching rule with real examples}}
 
-Common types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, and
-`perf`. Use `!` or a `BREAKING CHANGE:` footer for breaking changes.
+Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <subject>`.
 
-## Pull Requests
+{{Traceability anchor rule + why + commit policy}}
 
-- Keep one concern per pull request.
-- Explain what changed, why, and any important design decisions.
-- Add or update tests for behavior changes and bug fixes.
-- Update documentation when behavior, commands, or public interfaces change.
-- Run the project's verification commands from [README.md](README.md), and style checks from [STYLE.md](STYLE.md) when present.
-- Address review feedback before merge.
+## Pull requests
 
-## Issues
+<!-- PR section: closes with a self-check list. Checklist items = verifiable
+states ("CI green", "docs updated"), never advice. Include the
+documentation-update obligation. An Issues section ships only when the repo
+uses GitHub Issues; otherwise omit it. -->
 
-- Include versions, environment details, and a minimal reproduction for bugs.
-- Use the project's security process for vulnerabilities; do not disclose them
-  in public issues.
+{{Open-to-merge sequence}}
+{{Review workflow}}
 
-{{Link to CODE_OF_CONDUCT.md, SECURITY.md, SUPPORT.md, or issue templates when present.}}
+Before submitting:
+
+- [ ] {{verifiable state}}
+- [ ] {{verifiable state}}
+- [ ] Documentation updated when behavior or interfaces changed
+
+{{Link to CODE_OF_CONDUCT.md, SECURITY.md, SUPPORT.md, or templates when present.}}
