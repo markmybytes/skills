@@ -25,12 +25,16 @@ before shipping the link definitions at the bottom. -->
 
 <!-- LOGO: delete the whole block when no real project logo exists. -->
 <br />
+<!-- Title = repo name (from the remote URL), not the product name; the product
+name belongs in the positioning line. Positioning leads with what this
+repository is, then the product/platform in parentheses — never describe only
+the product. -->
 <div align="center">
   <a href="https://github.com/{{owner}}/{{repo}}">
-    <img src="{{logo URL or repository path}}" alt="{{project name}} logo" width="80" height="80">
+    <img src="{{logo URL or repository path}}" alt="{{repo name}} logo" width="80" height="80">
   </a>
 
-  <h3 align="center">{{project name}}</h3>
+  <h3 align="center">{{repo name}}</h3>
 
   <p align="center">
     {{one-line positioning: what it is, who it is for}}

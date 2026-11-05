@@ -5,7 +5,12 @@ Replace {{...}} with user-provided or repo-evidenced facts. Delete this
 comment when finished.
 -->
 
-# {{project name}}
+<!-- H1: title = repo name (from the remote URL), not the product name. The
+product belongs in the description line below, not the title.
+DESCRIPTION: lead with what this repository is, then the product/platform in
+parentheses — never describe only the product. -->
+
+# {{repo name}}
 
 {{One-sentence project description — what it is, who it is for, and what it owns.}}
 

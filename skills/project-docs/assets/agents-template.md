@@ -12,7 +12,9 @@ when finished.
 <!-- DOC MAP: agent-relevant docs only. A README row and a self-row never
 ship — human docs do not reverse-reference this file. One row per doc the
 agent must read, purpose = one "defining X" sentence from the doc's own
-self-description. Remove rows for files that do not exist. -->
+self-description. Remove rows for files that do not exist. The map ships as
+a bare table; no lead-in sentence; ordering stays alphabetical by row path —
+never narrated. A row = file or directory path + purpose, nothing else. -->
 
 ## Documentation map
 

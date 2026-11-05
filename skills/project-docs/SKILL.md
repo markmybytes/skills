@@ -44,14 +44,14 @@ A doc earns existence by a coherent fact family plus evidence-backed rules that 
 ### Flow: CLASSIFY → GATHER → PLAN → ASK → EXECUTE → VERIFY
 
 - **CLASSIFY**: mode, scope, README profile. A named doc or action overrides default scope. A doc the user names enters the plan as requested — the gate still runs for its defaults and blocking facts. Unclear profile is a gate part 4 question, not a side ask. No actionable instruction means plan only, no edits.
-- **GATHER**: in-scope Markdown, templates, repo evidence. Skim `docs/` self-descriptions only. Classify every fact candidate before writing: a repo file or the framework docs already state it → pointer only. Decision reasons and contracts → docs may own. Record missing facts, policy conflicts, unowned domains.
+- **GATHER**: in-scope Markdown, templates, repo evidence. Skim `docs/` self-descriptions only. Mine history and command surfaces before drafting workflow conventions: `git log --format=%s` for tracker keys and merge suffixes, the CLI registry (such as console commands) for the command surface. Classify every fact candidate before writing: a repo file or the framework docs already state it → pointer only. Decision reasons and contracts → docs may own. Record missing facts, policy conflicts, unowned domains.
 - **PLAN**: follow templates, gates, and ownership rules. Keep accurate facts. Remove empty sections. One owner per fact, others link. Propose ask/offer docs only when unowned and repo-evidenced. Feedback across multiple files: consolidate into one per-doc plan before editing.
 - **ASK**: the single gate. Fast-path and plain review (findings, no fixes) skip it.
 - **EXECUTE**: run the approved plan. A fast-path run's named fixes are the plan. Default order: `README.md`, then `AGENTS.md`, then `CONTRIBUTING.md`, then other approved docs. The plan may reorder. No unplanned edits. Update doc maps on add, remove, or rename.
 - **VERIFY** — checklist — loop until clean:
   - Verify links, paths, and the doc map resolve and stay current. Verify referenced config filenames exist.
   - Verify commands, versions, ports, paths, and test locations against repo evidence or facts the user provided. Report unresolved items. Never guess. A claim that is unverifiable but not disproven lands as a pointer where a source exists; with no source, drop it and report blocked-needs-user.
-  - Claims carried from an existing doc are not evidence. List every moved or repeated factual claim as a check row — prerequisites, commands, environment behavior, file presence. Verify each row against its config, code, or file existence. A scan without rows does not count. Never flag `docs/` content.
+  - Claims carried from an existing doc are not evidence. List every moved or repeated factual claim as a check row — prerequisites, commands, environment behavior, file presence. Verify each row against its config, code, or file existence. A scan without rows does not count. Never flag `docs/` content. A command row that ships in more than one doc reconciles against its single manifest source; wording drift between docs is a failing row.
   - Fix false claims in every in-scope root doc, including sections you did not change.
   - Sweep every edited doc for transcription residue, double-owned facts, duplicate or empty headings. Semantic repeats count: the same claim rephrased across docs is a double owner even when no two lines match textually.
   - A count or statistic carries its verifying command. A count that is not re-derivable in-tree gets re-derived before it ships or is replaced by a qualitative statement. Never ship a number that survives only because a source doc carried it.
@@ -109,7 +109,7 @@ Cross-doc references use real file links. Raw section anchors never: they rot on
 
 Imperative voice with rationale: state the why once, then the rule. Checklist items state verifiable states, never advice. Explore before asking: answer from the repo first, ask only when still ambiguous. Examples that claim repo evidence resolve to a real branch, commit, or file. Unverifiable ones ship as `<example>` with the evidence claim removed.
 
-Never transcribe what a config file can answer. Hosts, ports, secret names, image tags, framework-official semantics, engine-version formulas — configs self-describe, pointer instead. Whitelist: values the reader copies at run time (commands, URLs) and load-bearing contract numbers. Never re-add sections the user dropped. Mechanism sentences — delivery, deploy paths, pipeline steps — cite the workflow's own step names and parameters verbatim, such as suite and scope values. Step names differ per environment; quote each exact name or point to the workflow file instead of asserting a same-name claim. Never paraphrase a mechanism.
+Never transcribe what a config file can answer. Hosts, ports, secret names, image tags, framework-official semantics, engine-version formulas — configs self-describe, pointer instead. Versions: quote the manifest constraint verbatim or ship the name without a number. Whitelist: values the reader copies at run time (commands, URLs) and load-bearing contract numbers. Never re-add sections the user dropped. Mechanism sentences — delivery, deploy paths, pipeline steps — cite the workflow's own step names and parameters verbatim, such as suite and scope values. Step names differ per environment; quote each exact name or point to the workflow file instead of asserting a same-name claim. Never paraphrase a mechanism.
 
 Write concise readable Markdown. Use tables for compact comparisons and doc maps. Use lists for procedures. Cut sections that do not help the reader. Do not promote code patterns into doc rules. Exception: an owned contract or pitfall rule that the owning doc's evidence gate backs.
 
@@ -123,9 +123,11 @@ Two templates: `assets/readme-user-template.md` (human onboarding) and `assets/r
 
 Tech stack = structural choices that constrain where and how code gets written. Versions and full tool lists never ship — `package.json` owns them.
 
-Prerequisites shape: one line per item — name plus one qualifier or link, a qualifier being a single behavior note such as "manages Node versions automatically". Never explain how a version resolves — the manifest shows it. Never ship manifest facts. A version manager covers the runtime it manages: list it, drop the bare language bullet.
+Prerequisites shape: one line per item — name plus one qualifier or link. Keep a qualifier only when the tool's intent is not guessable from its name or link; a well-known tool ships as a bare link. Never explain how a version resolves — the manifest shows it. Never ship manifest facts. A version manager covers the runtime it manages: list it, drop the bare language bullet.
 
 Badges: copy tech badges as generated markup from https://badges.pages.dev/ (Simple Badges) with `style=for-the-badge&logoColor=white`. Include only major technologies. Link each badge to its official site when known. Never invent badge slugs or URLs. Repo-status badges are hand-assembled shields.io URLs. Never normalize one style to the other.
+
+The documentation map lists the root docs plus `docs/migration/` only. Other directory rows belong to the owning map (AGENTS.md or the doc that owns them), never README.
 
 ### AGENTS.md
 
@@ -143,7 +145,7 @@ Never invent Jira keys, branch prefixes, merge strategy, CLA rules, reviewer rul
 
 Template: `assets/architecture-template.md`.
 
-Owns repo-structure deltas (standard framework layout gets one pointer line, never a transcription), code placement, per-domain contracts, and system design. Holds coding conventions when no `STYLE.md` exists. Gate per contract section: official docs do not say it, and a change here breaks things. Pitfall-plus-reason lines are the content. Neighbor pointers never ship here — one scope-declaration line is required. A coexisting structure doc (`STRUCTURE.md` or a variant) is an `ownership` finding: structure is this doc's fact family. Audit proposes the fold at the gate; consolidate executes it in the root set.
+Owns repo-structure deltas (standard framework layout gets one pointer line, never a transcription), code placement, per-domain contracts, and system design. Code placement = directory placement; data-lifecycle and routing rules live with their contracts. Holds coding conventions when no `STYLE.md` exists. Gate per contract section: official docs do not say it, and a change here breaks things. Pitfall-plus-reason lines are the content. Neighbor pointers never ship here — one scope-declaration line is required. A coexisting structure doc (`STRUCTURE.md` or a variant) is an `ownership` finding: structure is this doc's fact family. Audit proposes the fold at the gate; consolidate executes it in the root set.
 
 ### DEPLOYMENT.md
 
